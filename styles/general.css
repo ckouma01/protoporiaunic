@@ -39,8 +39,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.2); /* darkness overlay */
-  backdrop-filter: blur(1px);      /* blur effect */
+ /* background: rgba(0, 0, 0, 0.2); /* darkness overlay */
+ /* backdrop-filter: blur(1px);      /* blur effect */
   z-index: 1;
 }
 
