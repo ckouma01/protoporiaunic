@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ΚΕΝΤΡΙΚΗ - ΠΡΩΤΟΠΟΡΙΑ UNIC</title>
+  <link rel="icon" href="images/logoPROTOPORIAS.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/general.css">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1; /* pushes footer down */
+    }
+
+    footer {
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+ <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #0a3d91;">
+    <div class="container d-flex align-items-center">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="images/logoPROTOPORIAS.png" alt="Logo" style="height: 60px;">
+        <h1>UNIC</h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">ΚΕΝΤΡΙΚΗ</a></li>
+          <li class="nav-item"><a class="nav-link" href="positions.html">ΘΕΣΕΙΣ</a></li>
+          <li class="nav-item"><a class="nav-link" href="neakeenimerosis.html">ΝΕΑ &amp; ΕΝΗΜΕΡΩΣΕΙΣ</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">ΕΚΔΗΛΩΣΕΙΣ</a></li>
+          <li class="nav-item"><a class="nav-link" href="bluecard.html">BLUE CARD</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutus.html">ΠΟΙΟΙ ΕΙΜΑΣΤΕ</a></li>
+          <li class="nav-item"><a class="nav-link active" href="aboutus.html">ΓΙΝΕ ΜΕΛΟΣ</a></li>
+        </ul>
+      </div>
+      <div class="d-none d-lg-block ms-3">
+        <a href="member.html" class="btn btn-outline-light">ΓΙΝΕ ΜΕΛΟΣ</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main>
+    <!-- Hero -->
+    <section class="hero2 d-flex align-items-center justify-content-center text-center">
+      <div style="padding-top: 100px;" class="hero-content">
+        <h1>Θες να γίνεις μέλος; Συμπλήρωσε την πάρακάτω φόρμα με τα στοιχεία σου</h1>
+      </div>
+    </section>
+  </main>
+
+<!-- Contact Form -->
+<form action="https://formspree.io/f/xvgwrboq" method="POST" class="p-3 border rounded bg-light">
+
+  <!-- Όνομα -->
+  <div class="mb-3">
+    <label for="firstName" class="form-label">Όνομα</label>
+    <input type="text" class="form-control" id="firstName" name="Όνομα" required>
+  </div>
+
+  <!-- Επίθετο -->
+  <div class="mb-3">
+    <label for="lastName" class="form-label">Επίθετο</label>
+    <input type="text" class="form-control" id="lastName" name="Επίθετο" required>
+  </div>
+
+  <!-- Τμήμα -->
+  <div class="mb-3">
+    <label for="department" class="form-label">Τμήμα</label>
+    <input type="text" class="form-control" id="department" name="Τμήμα" required>
+  </div>
+
+  <!-- Έτος Σπουδών -->
+  <div class="mb-3">
+    <label for="year" class="form-label">Έτος Σπουδών</label>
+    <select class="form-select" id="year" name="Έτος Σπουδών" required>
+      <option value="" disabled selected>Επιλέξτε...</option>
+      <option value="1ο">1ο</option>
+      <option value="2ο">2ο</option>
+      <option value="3ο">3ο</option>
+      <option value="4ο">4ο</option>
+      <option value="5ο+">5ο+</option>
+    </select>
+  </div>
+
+  <!-- Τηλέφωνο -->
+  <div class="mb-3">
+    <label for="phone" class="form-label">Τηλέφωνο</label>
+    <input type="tel" class="form-control" id="phone" name="Τηλέφωνο" pattern="[0-9]{8,15}" placeholder="+357..." required>
+  </div>
+
+  <!-- Email -->
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" name="Email" required>
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" class="btn btn-primary">ΥΠΟΒΟΛΗ</button>
+</form>
+
+
+
+   <!-- Footer -->
+<footer class="text-light py-4" style="background-color: #0a3d91;">
+  <div class="container text-center">
+    <p class="mb-1">&copy; 2025 Φοιτιτική Παράταξη Πρωτοπορία Πανεπιστημίου Λευκωσίας. All rights reserved.</p>
+    
+   <!-- Social Media Icons -->
+<div class="d-flex justify-content-center gap-3 mb-2">
+  <a href="https://www.instagram.com/protoporiaunic/" target="_blank">
+    <img src="images/instagram-new--v2.png" style="height: 30px;">
+  </a>
+  <a href="https://www.tiktok.com/@fpkprotoporia.unic" target="_blank">
+    <img src="images/tiktok.png" style="height: 30px;">
+  </a>
+</div>
+
+
+    <!-- Contact Links -->
+    <p class="mb-0">
+      <a href="mailto:protoporiafpkunic@gmail.com" class="text-warning text-decoration-none">
+        Contact us
+      </a>
+    </p>
+    
+    <!-- Credits -->
+    <div style="font-size: 13px; margin-top: 5px;">
+      Made and designed by <a href="https://koumasweb.com" target="_blank" class="text-warning">KoumasWeb</a> ©
+    </div>
+  </div>
+</footer>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

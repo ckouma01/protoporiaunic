@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BlueCard – ΠΡΩΤΟΠΟΡΙΑ UNIC</title>
+  <link rel="icon" href="images/logoPROTOPORIAS.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/general.css">
+  <style>
+    html, body { height: 100%; margin: 0; display: flex; flex-direction: column; }
+    body { min-height: 100vh; }
+    main { flex: 1; }
+    footer { margin-top: auto; }
+
+    /* Section chrome (same spacing as other pages) */
+    .page-wrap { padding-top: 100px; }
+
+    /* Call-to-action */
+    .cta-wrap { text-align: center; margin-bottom: 2rem; }
+    .cta-wrap p { color:#444; margin-bottom: .5rem; }
+
+    /* Partner list (cards look like your screenshots) */
+    .partner-card {
+      background:#fff;
+      border-radius:12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,.08);
+      display:flex; align-items:center; gap:1rem;
+      padding: 1.25rem;
+      border: 1px solid #eee;
+    }
+    .partner-logo {
+      width:84px; height:84px; border-radius:50%;
+      flex:0 0 84px; background:#f2f2f2;
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .partner-logo img { width:100%; height:100%; object-fit:cover; }
+    .partner-logo .initials {
+      font-weight:700; font-size:28px; color:#2b2b2b;
+    }
+    .partner-main { flex:1 1 auto; min-width:0; }
+    .partner-title {
+      color:#c82333; /* red like screenshot */
+      font-weight:600; margin:0 0 .25rem 0;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .partner-meta { color:#333; font-size:.95rem; }
+    .partner-meta .bi { margin-right:.35rem; }
+    .partner-badge {
+      display:inline-block; background:#dc3545; color:#fff;
+      font-size:.75rem; padding:.15rem .45rem; border-radius:999px;
+      margin-left:.5rem;
+    }
+
+    /* Brand detail modal content */
+    .detail-kv { margin-bottom:.25rem; }
+    .detail-kv b { display:inline-block; width:115px; color:#333; }
+    .detail-block-title { font-weight:600; margin-top:.75rem; }
+
+    /* Grid spacing */
+    .brands-grid { row-gap: 1.25rem; }
+  </style>
+</head>
+<body>
+
+ <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #0a3d91;">
+    <div class="container d-flex align-items-center">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="images/logoPROTOPORIAS.png" alt="Logo" style="height: 60px;">
+        <h1>UNIC</h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">ΚΕΝΤΡΙΚΗ</a></li>
+          <li class="nav-item"><a class="nav-link" href="positions.html">ΘΕΣΕΙΣ</a></li>
+          <li class="nav-item"><a class="nav-link" href="neakeenimerosis.html">ΝΕΑ &amp; ΕΝΗΜΕΡΩΣΕΙΣ</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">ΕΚΔΗΛΩΣΕΙΣ</a></li>
+          <li class="nav-item"><a class="nav-link active" href="bluecard.html">BLUE CARD</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutus.html">ΠΟΙΟΙ ΕΙΜΑΣΤΕ</a></li>
+        </ul>
+      </div>
+      <div class="d-none d-lg-block ms-3">
+        <a href="member.html" class="btn btn-outline-light">ΓΙΝΕ ΜΕΛΟΣ</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Main -->
+  <main class="page-wrap">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="mb-1">BlueCard – Συνεργαζόμενα Καταστήματα</h2>
+        <p class="text-muted mb-0">Δες τα οφέλη σου με την BlueCard και άνοιξε την κάρτα καταστήματος για λεπτομέρειες.</p>
+      </div>
+
+      <div class="cta-wrap">
+        <p>Θέλεις να αποκτήσεις την κάρτα προνομίων;</p>
+        <button style="background-color: #0a3d91;" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#applyModal">
+          ΑΠΟΚΤΗΣΗ BLUECARD
+        </button>
+      </div>
+
+      <!-- Brands Grid -->
+      <div id="brandsGrid" class="row brands-grid">
+        <!-- cards injected here -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+<footer class="text-light py-4" style="background-color: #0a3d91;">
+  <div class="container text-center">
+    <p class="mb-1">&copy; 2025 Φοιτιτική Παράταξη Πρωτοπορία Πανεπιστημίου Λευκωσίας. All rights reserved.</p>
+    
+   <!-- Social Media Icons -->
+<div class="d-flex justify-content-center gap-3 mb-2">
+  <a href="https://www.instagram.com/protoporiaunic/" target="_blank">
+    <img src="images/instagram-new--v2.png" style="height: 30px;">
+  </a>
+  <a href="https://www.tiktok.com/@fpkprotoporia.unic" target="_blank">
+    <img src="images/tiktok.png" style="height: 30px;">
+  </a>
+</div>
+
+
+    <!-- Contact Links -->
+    <p class="mb-0">
+      <a href="mailto:protoporiafpkunic@gmail.com" class="text-warning text-decoration-none">
+        Contact us
+      </a>
+    </p>
+    
+    <!-- Credits -->
+    <div style="font-size: 13px; margin-top: 5px;">
+      Made and designed by <a href="https://koumasweb.com" target="_blank" class="text-warning">KoumasWeb</a> ©
+    </div>
+  </div>
+</footer>
+
+  <!-- Brand Detail Modal -->
+  <div class="modal fade" id="brandModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="brandModalTitle" class="modal-title"></h5>
+          <button type="button" style="background-color: #0a3d91;" class="btn btn-sm btn-primary" data-bs-target="#applyModal" data-bs-toggle="modal">
+            ΑΠΟΚΤΗΣΗ BLUECARD
+          </button>
+          <button type="button" class="btn-close ms-2" data-bs-dismiss="modal" aria-label="Κλείσιμο"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-sm-4 text-center">
+              <div class="partner-logo mx-auto">
+                <img id="brandModalLogo" alt="">
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div id="brandModalBody"></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <small class="text-muted">Απαιτείται φοιτητική ταυτότητα όπου αναγράφεται.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Apply / Form Modal (uses your existing form) -->
+  <div class="modal fade" id="applyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Υποβολή αίτησης για απόκτηση BlueCard</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Κλείσιμο"></button>
+        </div>
+        <div class="modal-body">
+          <form action="https://formspree.io/f/mqaybnrp" method="POST" class="p-3 border rounded bg-light">
+            <div class="mb-3">
+              <label for="firstName" class="form-label">Όνομα</label>
+              <input type="text" class="form-control" id="firstName" name="Όνομα" required>
+            </div>
+            <div class="mb-3">
+              <label for="lastName" class="form-label">Επίθετο</label>
+              <input type="text" class="form-control" id="lastName" name="Επίθετο" required>
+            </div>
+            <div class="mb-3">
+              <label for="department" class="form-label">Τμήμα</label>
+              <input type="text" class="form-control" id="department" name="Τμήμα" required>
+            </div>
+            <div class="mb-3">
+              <label for="year" class="form-label">Έτος Σπουδών</label>
+              <select class="form-select" id="year" name="Έτος Σπουδών" required>
+                <option value="" disabled selected>Επιλέξτε...</option>
+                <option value="1ο">1ο</option>
+                <option value="2ο">2ο</option>
+                <option value="3ο">3ο</option>
+                <option value="4ο">4ο</option>
+                <option value="5ο+">5ο+</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Τηλέφωνο</label>
+              <input type="tel" class="form-control" id="phone" name="Τηλέφωνο" pattern="[0-9+\s\-]{8,15}" placeholder="+357..." required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="studentId" class="form-label">STUDENT ID</label>
+              <input class="form-control" id="studentId" name="STUDENT_ID" required>
+            </div>
+            <input type="hidden" name="_subject" value="Νέα αίτηση Blue Card">
+            <input type="text" name="_gotcha" style="display:none">
+            <button type="submit" class="btn btn-primary">ΥΠΟΒΟΛΗ ΑΙΤΗΣΗΣ ΑΠΟΚΤΗΣΗΣ BLUECARD</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ===== Placeholder partners =====
+    // Replace / extend this list when you have the final brands.
+    const brands = [
+      {
+        name: "Angelidou Pharmacy",
+        discount: "12% Discount",
+        start: "08 July 2025",
+        end: "30 September 2026",
+        logo: "images/brand_pharmacy.png", // optional; if missing, initials bubble is used
+        new: false,
+        description: [
+          "Discount is not applied on already existing offers and medicines.",
+          "Discount is applied on supplements and cosmetics.",
+          "Already existing offers are on APIVITA-15% and KORRES-20% all year long. Other offers can be given throughout the year.",
+          "Exception of no discount includes baby formulas, nutritional supplements (nutricia), baby/adult nappies and sanitary towels/tampons and condoms."
+        ],
+        contact: {
+          address: "Kyrakou Matsi 48, Engomi, 2409",
+          tel: "+35722355366",
+          facebook: { text: "Angelidou Pharmacy", url: "#" },
+          instagram: { text: "angelidou.pharmacy", url: "#" }
+        }
+      },
+      {
+        name: "AKAKIKO Engomi",
+        discount: "20% Discount (Monday – Thursday)",
+        start: "03 October 2025",
+        end: "31 December 2026",
+        logo: "images/brand_akakiko.png",
+        new: true,
+        description: ["See in-store details. Valid on specified days; terms may apply."],
+        contact: { address: "Engomi", tel: "", facebook: null, instagram: null }
+      },
+      {
+        name: "Arabica Coffee House Engomi",
+        discount: "20% Discount",
+        start: "06 October 2025",
+        end: "30 September 2026",
+        logo: "images/brand_arabica.png",
+        new: true,
+        description: ["Valid for students with ID. Excludes other promos."],
+        contact: { address: "Engomi", tel: "", facebook: null, instagram: null }
+      },
+      {
+        name: "Anna Maria Mazaraki",
+        discount: "20% Discount",
+        start: "17 July 2025",
+        end: "30 September 2026",
+        logo: "images/brand_mazaraki.png",
+        new: false,
+        description: ["Jewellery & accessories. Certain collections may be excluded."],
+        contact: { address: "", tel: "", facebook: null, instagram: null }
+      },
+      {
+        name: "ATHLOKINISI",
+        discount: "15% Discount",
+        start: "01 July 2024",
+        end: "30 September 2026",
+        logo: "images/brand_athlokinisi.png",
+        new: false,
+        description: ["Sportswear & equipment. Excludes already discounted items."],
+        contact: { address: "", tel: "", facebook: null, instagram: null }
+      },
+      {
+        name: "Bolt Food / Bolt Ride",
+        discount: "Please see description.",
+        start: "29 September 2025",
+        end: "30 September 2026",
+        logo: "images/brand_bolt.png",
+        new: false,
+        description: ["Per-app promos for BlueCard users. Terms vary."],
+        contact: { address: "", tel: "", facebook: null, instagram: null }
+      },
+      {
+        name: "Alpha Laser and Aesthetics",
+        discount: "15% Discount",
+        start: "29 September 2025",
+        end: "30 September 2026",
+        logo: "images/brand_alpha.png",
+        new: false,
+        description: ["Services & treatments. Some courses excluded."],
+        contact: { address: "", tel: "", facebook: null, instagram: null }
+      },
+      {
+        name: "ARC Nicosia",
+        discount: "See Description.",
+        start: "09 June 2025",
+        end: "30 September 2026",
+        logo: "images/brand_arc.png",
+        new: false,
+        description: ["Ask at store for current BlueCard offer."],
+        contact: { address: "", tel: "", facebook: null, instagram: null }
+      },
+      {
+        name: "Bottega Verde",
+        discount: "10% Discount",
+        start: "03 July 2025",
+        end: "30 September 2029",
+        logo: "images/brand_bottega.png",
+        new: false,
+        description: ["Cosmetics & skincare. Certain exclusions may apply."],
+        contact: { address: "", tel: "", facebook: null, instagram: null }
+      },
+      {
+        name: "Wine and More by French Depot",
+        discount: "15% Discount",
+        start: "21 July 2025",
+        end: "30 September 2026",
+        logo: "images/brand_wine.png",
+        new: false,
+        description: ["Wine & delicatessen. Excludes special promos."],
+        contact: { address: "", tel: "", facebook: null, instagram: null }
+      }
+    ];
+
+    // ===== Rendering =====
+    const grid = document.getElementById('brandsGrid');
+    const brandModal = new bootstrap.Modal(document.getElementById('brandModal'));
+    const brandModalTitle = document.getElementById('brandModalTitle');
+    const brandModalBody  = document.getElementById('brandModalBody');
+    const brandModalLogo  = document.getElementById('brandModalLogo');
+
+    function makeInitials(name) {
+      return (name || "")
+        .split(" ")
+        .slice(0, 2)
+        .map(w => w[0]?.toUpperCase() || "")
+        .join("");
+    }
+
+    function renderCard(b) {
+      const col = document.createElement('div');
+      col.className = "col-12 col-md-6 col-xl-4";
+
+      const logoHTML = b.logo
+        ? `<img src="${b.logo}" alt="${b.name}">`
+        : `<div class="initials">${makeInitials(b.name)}</div>`;
+
+      col.innerHTML = `
+        <div class="partner-card h-100">
+          <div class="partner-logo">${logoHTML}</div>
+          <div class="partner-main">
+            <div class="d-flex align-items-center">
+              <h5 class="partner-title mb-0">${b.name}</h5>
+              ${b.new ? `<span class="partner-badge ms-2">New</span>` : ``}
+            </div>
+            <div class="partner-meta mt-2">
+              <div class="mb-1"><i class="bi bi-tag"></i>${b.discount || ''}</div>
+              <div class="mb-1"><i class="bi bi-calendar-event"></i>${b.start || ''}</div>
+              <div class=""><i class="bi bi-calendar2-check"></i>${b.end || ''}</div>
+            </div>
+          </div>
+          <div class="text-end">
+            <button style="border-color: #0a3d91; color:#0a3d91" class="btn btn-outline-primary btn-sm">Προβολή</button>
+          </div>
+        </div>
+      `;
+
+      col.querySelector('button').addEventListener('click', () => openBrand(b));
+      grid.appendChild(col);
+    }
+
+    function openBrand(b) {
+      brandModalTitle.textContent = b.name || '';
+      if (b.logo) {
+        brandModalLogo.src = b.logo;
+        brandModalLogo.classList.remove('d-none');
+      } else {
+        brandModalLogo.classList.add('d-none');
+        brandModalLogo.removeAttribute('src');
+      }
+
+      const lines = [];
+      if (b.discount) lines.push(`<div class="detail-kv"><b>Offer</b> ${b.discount}</div>`);
+      lines.push(`<div class="detail-kv"><b>Eligibility</b> Student ID Card required.</div>`);
+      if (b.start) lines.push(`<div class="detail-kv"><b>Start Date</b> ${b.start}</div>`);
+      if (b.end)   lines.push(`<div class="detail-kv"><b>End Date</b> ${b.end}</div>`);
+      if (b.description?.length) {
+        lines.push(`<div class="detail-block-title">Description</div>`);
+        lines.push(`<div>${b.description.map(p => `<div>${p}</div>`).join("")}</div>`);
+      }
+      if (b.contact && (b.contact.address || b.contact.tel || b.contact.facebook || b.contact.instagram)) {
+        lines.push(`<div class="detail-block-title">Contact Information</div>`);
+        if (b.contact.address)   lines.push(`<div><b>Address:</b> ${b.contact.address}</div>`);
+        if (b.contact.tel)       lines.push(`<div><b>Tel:</b> ${b.contact.tel}</div>`);
+        if (b.contact.facebook)  lines.push(`<div><b>Facebook:</b> <a href="${b.contact.facebook.url||'#'}" target="_blank" rel="noopener">${b.contact.facebook.text||''}</a></div>`);
+        if (b.contact.instagram) lines.push(`<div><b>Instagram:</b> <a href="${b.contact.instagram.url||'#'}" target="_blank" rel="noopener">${b.contact.instagram.text||''}</a></div>`);
+      }
+
+      brandModalBody.innerHTML = lines.join("");
+      brandModal.show();
+    }
+
+    // Initial render
+    brands.forEach(renderCard);
+  </script>
+</body>
+</html>

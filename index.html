@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ΚΕΝΤΡΙΚΗ - ΠΡΩΤΟΠΟΡΙΑ UNIC</title>
+  <link rel="icon" href="images/logoPROTOPORIAS.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/general.css">
+  <style>
+    /* ===== Highlights scroller ===== */
+    .highlights { --gap: 1rem; --speed: 45s; }
+    .highlights .scroller {
+      overflow: hidden;
+      position: relative;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      width: 100%;
+    }
+    .highlights .track {
+      display: flex;
+      gap: var(--gap);
+      width: max-content;
+      will-change: transform;
+      animation: scroll var(--speed) linear infinite;
+    }
+    .highlight-card {
+      width: 280px;
+      border-radius: 14px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      cursor: pointer;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      text-decoration: none;
+      color: inherit;
+    }
+    .highlight-card img,
+    .highlight-card video {
+      width: 100%; height: 180px; object-fit: cover;
+      display: block;
+    }
+    .highlight-card .label {
+      position: absolute; top: 8px; left: 8px;
+      z-index: 30;
+      font-size: 0.8rem;
+    }
+    .highlight-card .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      opacity: 0;
+      transition: opacity .3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+    }
+    .highlight-card:hover .overlay { opacity: 1; }
+    .overlay h6 { margin-bottom: .5rem; }
+    .overlay p { font-size: 0.85rem; margin: 0; }
+    .highlights .scroller:hover .track { animation-play-state: paused; }
+
+    @media (min-width: 992px) {
+      .highlight-card { width: 340px; }
+      .highlight-card img, .highlight-card video { height: 220px; }
+    }
+
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* Reduced motion fallback */
+    @media (prefers-reduced-motion: reduce) {
+      .highlights .track { animation: none; }
+      .highlights .scroller { overflow-x: auto; }
+    }
+    .no-animate .track { animation: none !important; }
+    .no-animate .scroller { overflow-x: auto; padding-bottom: .25rem; }
+
+    /* ===== Modal media sizing ===== */
+    .modal-media {
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    /* ===== Latest News section ===== */
+    .news-strip { background: #f7f8fb; }
+    .news-grid .news-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+      height: 100%;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .news-grid .news-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,.12);
+    }
+    .news-thumb {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #e9ecef;
+    }
+    .news-body { padding: 14px 16px; }
+    .news-title { font-weight: 700; font-size: 1rem; margin: 0 0 .25rem; line-height: 1.35; }
+    .news-date { font-size: .85rem; color: #6c757d; margin-bottom: .4rem; }
+    .news-excerpt { color: #495057; font-size: .95rem; margin: 0; }
+    @media (min-width: 992px) {
+      .news-thumb { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #0a3d91;">
+    <div class="container d-flex align-items-center">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="images/logoPROTOPORIAS.png" alt="Logo" style="height: 60px;">
+        <h1>UNIC</h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="index.html">ΚΕΝΤΡΙΚΗ</a></li>
+          <li class="nav-item"><a class="nav-link" href="positions.html">ΘΕΣΕΙΣ</a></li>
+          <li class="nav-item"><a class="nav-link" href="neakeenimerosis.html">ΝΕΑ &amp; ΕΝΗΜΕΡΩΣΕΙΣ</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">ΕΚΔΗΛΩΣΕΙΣ</a></li>
+          <li class="nav-item"><a class="nav-link" href="bluecard.html">BLUE CARD</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutus.html">ΠΟΙΟΙ ΕΙΜΑΣΤΕ</a></li>
+        </ul>
+      </div>
+      <div class="d-none d-lg-block ms-3">
+        <a href="member.html" class="btn btn-outline-light">ΓΙΝΕ ΜΕΛΟΣ</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero with highlights inside -->
+  <section class="hero d-flex flex-column align-items-center justify-content-center text-center">
+    <div style="padding-top: 100px;" class="hero-content">
+      <a href="member.html" class="btn btn-outline-light btn-lg">ΓΙΝΕ ΜΕΛΟΣ</a>
+    </div>
+
+    <!-- Highlights just below -->
+    <div class="container mt-5"></div>
+    <div id="highlightsWrap" class="highlights scroller w-100 px-3 mb-5">
+      <h2 style="margin-top: 150px" class="text-center mb-3 text-light">Αρχείο</h2>
+      <div id="highlightsTrack" class="track"></div>
+    </div>
+  </section>
+
+  <!-- Latest News Section -->
+  <section class="news-strip py-5">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <h3 class="m-0">Νέα &amp; Ενημερώσεις</h3>
+        <a href="neakeenimerosis.html" class="btn btn-outline-primary btn-sm">Δες όλα</a>
+      </div>
+
+      <div id="latestNewsGrid" class="row g-3 news-grid">
+        <!-- news cards injected here -->
+      </div>
+    </div>
+  </section>
+
+ <!-- Footer -->
+<footer class="text-light py-4" style="background-color: #0a3d91;">
+  <div class="container text-center">
+    <p class="mb-1">&copy; 2025 Φοιτιτική Παράταξη Πρωτοπορία Πανεπιστημίου Λευκωσίας. All rights reserved.</p>
+    
+   <!-- Social Media Icons -->
+<div class="d-flex justify-content-center gap-3 mb-2">
+  <a href="https://www.instagram.com/protoporiaunic/" target="_blank">
+    <img src="images/instagram-new--v2.png" style="height: 30px;">
+  </a>
+  <a href="https://www.tiktok.com/@fpkprotoporia.unic" target="_blank">
+    <img src="images/tiktok.png" style="height: 30px;">
+  </a>
+</div>
+
+
+    <!-- Contact Links -->
+    <p class="mb-0">
+      <a href="mailto:protoporiafpkunic@gmail.com" class="text-warning text-decoration-none">
+        Contact us
+      </a>
+    </p>
+    
+    <!-- Credits -->
+    <div style="font-size: 13px; margin-top: 5px;">
+      Made and designed by <a href="https://koumasweb.com" target="_blank" class="text-warning">KoumasWeb</a> ©
+    </div>
+  </div>
+</footer>
+
+  <!-- Home Highlight Modal -->
+  <div class="modal fade" id="homeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="homeModalTitle" class="modal-title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Κλείσιμο"></button>
+        </div>
+        <div class="modal-body text-center">
+          <div id="homeModalMediaWrap"></div>
+          <p id="homeModalDesc" class="text-muted mt-3 mb-0"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Firebase + Highlights + Latest News -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import {
+      getFirestore, collection, query, orderBy, limit, getDocs
+    } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCvqbwjAOg0eKii7AcbLCDY93Vws5bUdfs",
+      authDomain: "protoporia-unic.firebaseapp.com",
+      projectId: "protoporia-unic",
+      storageBucket: "protoporia-unic.firebasestorage.app",
+      messagingSenderId: "694349187986",
+      appId: "1:694349187986:web:93ef873c8f48b929b20f4b"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db  = getFirestore(app);
+
+    const highlightsWrap  = document.getElementById('highlightsWrap');
+    const highlightsTrack = document.getElementById('highlightsTrack');
+
+    // Modal refs
+    const homeModal        = document.getElementById('homeModal');
+    const homeModalTitle   = document.getElementById('homeModalTitle');
+    const homeModalDesc    = document.getElementById('homeModalDesc');
+    const homeModalMedia   = document.getElementById('homeModalMediaWrap');
+
+    function openHomeModal({ title = "", description = "", url = "", isVideo = false }) {
+      homeModalTitle.textContent = title || '';
+      homeModalDesc.textContent  = description || '';
+
+      homeModalMedia.innerHTML = isVideo
+        ? `<video class="modal-media" src="${url}" controls playsinline></video>`
+        : `<img class="modal-media" src="${url}" alt="">`;
+
+      const modal = new bootstrap.Modal(homeModal);
+      modal.show();
+    }
+
+    async function loadHighlights() {
+      const items = [];
+      const snap = await getDocs(query(collection(db,'home'), orderBy('createdAt','desc'), limit(20)));
+      snap.forEach(docSnap => {
+        const d = docSnap.data();
+        const media = d.media || {};
+        if (!media.url) return;
+
+        items.push({
+          label: d.label || 'Εικόνα',
+          title: d.title || '',
+          desc: d.description || '',
+          url: media.url,
+          isVideo: (media.contentType || '').startsWith('video/')
+        });
+      });
+
+      if (!items.length) {
+        highlightsWrap.classList.add('no-animate');
+        return;
+      }
+
+      const appendSet = (arr) => {
+        arr.forEach(item => {
+          const a = document.createElement('a');
+          a.href = "#";
+          a.className = "highlight-card";
+          a.innerHTML = `
+            <span class="label badge bg-${item.label==="Εκδήλωση"?"primary":"secondary"}">${item.label}</span>
+            ${item.isVideo
+              ? `<video src="${item.url}" muted playsinline loop></video>`
+              : `<img src="${item.url}" alt="${item.title}" loading="lazy">`}
+            <div class="overlay">
+              <h6>${item.title}</h6>
+              <p>${item.desc}</p>
+            </div>
+          `;
+
+          const vid = a.querySelector('video');
+          if (vid) { vid.addEventListener('canplay', () => vid.play().catch(()=>{})); }
+
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            openHomeModal({ title: item.title, description: item.desc, url: item.url, isVideo: item.isVideo });
+          });
+          a.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openHomeModal({ title: item.title, description: item.desc, url: item.url, isVideo: item.isVideo });
+            }
+          });
+
+          highlightsTrack.appendChild(a);
+        });
+      };
+
+      appendSet(items);
+      if (items.length >= 4) appendSet(items);
+      else highlightsWrap.classList.add('no-animate');
+    }
+
+    // ===== Latest News on homepage (links to neakeenimerosis.html) =====
+    const latestNewsGrid = document.getElementById('latestNewsGrid');
+
+    const escapeHtml = (s='') =>
+      s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+    const fmtDate = (date) =>
+      date.toLocaleDateString('el-GR', { day:'2-digit', month:'long', year:'numeric' });
+
+    function stripHtml(html='') {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    function renderNewsCard({ title, date, imageUrl, content }) {
+      const excerpt = (stripHtml(content).trim()).slice(0, 120) + (content.length > 120 ? '…' : '');
+      const col = document.createElement('div');
+      col.className = 'col-12 col-md-6 col-lg-3';
+      col.innerHTML = `
+        <a class="news-card" href="neakeenimerosis.html">
+          ${imageUrl ? `<img class="news-thumb" src="${imageUrl}" alt="${escapeHtml(title)}">` : ''}
+          <div class="news-body">
+            <div class="news-title">${escapeHtml(title || 'Χωρίς τίτλο')}</div>
+            <div class="news-date">${date ? escapeHtml(fmtDate(date)) : ''}</div>
+            <p class="news-excerpt">${escapeHtml(excerpt)}</p>
+          </div>
+        </a>
+      `;
+      latestNewsGrid.appendChild(col);
+    }
+
+    async function loadLatestNews() {
+      try {
+        const snap = await getDocs(
+          query(collection(db, 'news'), orderBy('date','desc'), limit(4))
+        );
+        if (snap.empty) {
+          const msg = document.createElement('div');
+          msg.className = 'col-12 text-center text-muted';
+          msg.textContent = 'Δεν υπάρχουν αναρτήσεις προς το παρόν.';
+          latestNewsGrid.appendChild(msg);
+          return;
+        }
+        snap.forEach(docSnap => {
+          const d = docSnap.data();
+          const jsDate = d?.date?.toDate ? d.date.toDate() : (d?.createdAt?.toDate ? d.createdAt.toDate() : null);
+          renderNewsCard({
+            title: d.title || '',
+            content: d.content || '',
+            imageUrl: d.imageUrl || '',
+            date: jsDate
+          });
+        });
+      } catch (e) {
+        const msg = document.createElement('div');
+        msg.className = 'col-12 text-center text-danger';
+        msg.textContent = 'Σφάλμα φόρτωσης νέων.';
+        latestNewsGrid.appendChild(msg);
+        console.error(e);
+      }
+    }
+
+    // init
+    loadHighlights();
+    loadLatestNews();
+  </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ΘΕΣΕΙΣ – Πρωτοπορία UNIC</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/general.css">
+  <style>
+    .subnav-wrap {
+      background:#f1f3f6;
+      border-bottom:1px solid #e2e6ea;
+      margin-top:80px; /* clears fixed navbar */
+    }
+    .subnav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display:flex;
+      gap:32px;
+      align-items:center;
+      justify-content:center;
+      padding:18px 16px;
+      font-weight:600;
+      letter-spacing:.02em;
+    }
+    .subnav a {
+      color:#2a3b57;
+      text-decoration:none;
+      position:relative;
+      padding:6px 2px;
+      opacity:.85;
+    }
+    .subnav a:hover { opacity:1; }
+    .subnav a.active {
+      color:#053a7e;
+    }
+    .subnav a.active::after {
+      content:"";
+      position:absolute;
+      left:0; right:0; bottom:-8px;
+      height:2px;
+      background:#053a7e;
+    }
+
+    .page-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    .title-row {
+      display:flex; align-items:center; gap:18px;
+      margin-top:8px; margin-bottom:22px;
+    }
+    .title-row .rule {
+      flex:1 1 auto;
+      height:1px; background:#e2e6ea;
+    }
+    h1.page-title {
+      margin:0;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height:1.15;
+      letter-spacing:.02em;
+      color:#2a3b57;
+      font-weight:700;
+      text-transform:uppercase;
+      text-align:center;
+      flex:0 0 auto;
+      padding:0 8px;
+    }
+
+    .section { display:none; }
+    .section.active { display:block; }
+
+    .section h2 {
+      font-size: clamp(22px, 2.5vw, 28px);
+      color:#2a3b57;
+      margin: 12px 0 10px;
+      font-weight: 700;
+    }
+
+    .section p.lead {
+      color:#4a4e57; font-size:18px;
+    }
+    .section ol {
+      padding-left: 1.2rem;
+    }
+    .section li {
+      margin-bottom:14px;
+      color:#2d3340;
+      line-height:1.6;
+      font-size:18px;
+    }
+
+    .muted { color:#6c7583; }
+  </style>
+</head>
+<body>
+
+ <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #0a3d91;">
+    <div class="container d-flex align-items-center">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="images/logoPROTOPORIAS.png" alt="Logo" style="height: 60px;">
+        <h1>UNIC</h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">ΚΕΝΤΡΙΚΗ</a></li>
+          <li class="nav-item"><a class="nav-link active" href="positions.html">ΘΕΣΕΙΣ</a></li>
+          <li class="nav-item"><a class="nav-link" href="neakeenimerosis.html">ΝΕΑ &amp; ΕΝΗΜΕΡΩΣΕΙΣ</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">ΕΚΔΗΛΩΣΕΙΣ</a></li>
+          <li class="nav-item"><a class="nav-link" href="bluecard.html">BLUE CARD</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutus.html">ΠΟΙΟΙ ΕΙΜΑΣΤΕ</a></li>
+        </ul>
+      </div>
+      <div class="d-none d-lg-block ms-3">
+        <a href="member.html" class="btn btn-outline-light">ΓΙΝΕ ΜΕΛΟΣ</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Sub Navigation -->
+<div class="subnav-wrap">
+  <div class="title-row"  style="margin-top: 40px;">
+    <div class="rule"></div>
+    <h1 class="page-title">ΘΕΣΕΙΣ</h1>
+    <div class="rule"></div>
+  </div>
+
+  <nav class="subnav" aria-label="Υπομενού Θέσεων">
+    <a href="#foititika" id="tab-foititika">ΦΟΙΤΗΤΙΚΑ</a>
+    <a href="#kypriako" id="tab-kypriako">ΚΥΠΡΙΑΚΟ</a>
+    <a href="#proposals" id="tab-proposals">ΠΡΟΤΑΣΕΙΣ</a>
+  </nav>
+</div>
+
+    <!-- ΦΟΙΤΗΤΙΚΑ -->
+    <section id="foititika" class="section">
+      <h2>Η ΦΠΚ ΠΡΩΤΟΠΟΡΙΑ ΠΡΟΤΕΙΝΕΙ</h2>
+      <ol>
+        <li><strong>Συνεχής Ανάπτυξη Πανεπιστημίων:</strong> Διεκδικούμε και απαιτούμε από όλους τους εμπλεκόμενους φορείς τη συνεχή ανάπτυξη, επέκταση και αναβάθμιση όλων των Πανεπιστημίων της Κύπρου με νέα προγράμματα, τμήματα και σχολές, χωρίς να κλείσει ή να ανασταλεί άλλο πρόγραμμα σπουδών.</li>
+        <li><strong>Διασύνδεση με Αγορά Εργασίας:</strong> Καλούμε τα πανεπιστήμια να συνεχίσουν τις προσπάθειες αναβάθμισης της διασύνδεσης με την αγορά εργασίας, προετοιμάζοντας καλύτερα τους φοιτητές για την επόμενη μέρα.</li>
+        <li><strong>Φοιτητική Μέριμνα:</strong> Απαιτούμε να μην μένει κανένα αδιάθετο ποσό μετά την αξιολόγηση των αιτήσεων. Προτείνουμε όλα τα αδιάθετα ποσά να μεταφέρονται στο φοιτητικό πακέτο μέσω επιδότησης, ανάλογα με τις ανάγκες των φοιτητών.</li>
+        <li><strong>Μετεγγραφές Κυπρίων Φοιτητών:</strong> Στήριξη της επανέναρξης των μετεγγραφών Κυπρίων φοιτητών στα ελληνικά πανεπιστήμια, προσθήκη κριτηρίου για φοιτητές με σοβαρές ασθένειες.</li>
+        <li><strong>Αυτοχρηματοδοτούμενα Προγράμματα:</strong> Στήριξη δημιουργίας προγραμμάτων στην αγγλική γλώσσα με δίδακτρα, για ανάπτυξη και διεθνοποίηση των δημόσιων πανεπιστημίων της Κύπρου.</li>
+        <li><strong>Στεγαστικό Επίδομα Ελλάδας:</strong> Επαναφορά του κριτηρίου των €3.000 ανά επιπλέον τέκνο για το στεγαστικό επίδομα των Κυπρίων φοιτητών στην Ελλάδα.</li>
+        <li><strong>Αύξηση Θέσεων σε Εστίες Ελλάδας:</strong> Διεκδικούμε περισσότερες θέσεις στις φοιτητικές εστίες της Ελλάδας για Κύπριους φοιτητές.</li>
+        <li><strong>Ανέγερση Νέων Εστιών στην Κύπρο:</strong> Προτείνουμε συνεργασία Πανεπιστημίων με ιδιώτες για δημιουργία νέων πολυκατοικιών/εστιών προς επίλυση του στεγαστικού προβλήματος.</li>
+        <li><strong>Αναβάθμιση Υλικοτεχνικής Υποδομής:</strong> Απαιτείται βελτίωση υποδομών σχολών και εργαστηρίων, ώστε να ανταποκρίνονται στις απαιτήσεις των μαθημάτων και της σύγχρονης εκπαίδευσης.</li>
+        <li><strong>Ηλεκτρονικό Εισιτήριο &amp; Κυκλοφοριακό:</strong> Στήριξη αναβάθμισης του μαζικού ηλεκτρονικού εισιτηρίου και άλλων μέτρων για μείωση του κυκλοφοριακού.</li>
+        <li><strong>Διαδικασία Μπολόνια &amp; Συνθήκη Λισαβόνας:</strong> Προώθηση της εναρμόνισης των Πανεπιστημίων με το Ευρωπαϊκό Σύστημα (ECTS), ενίσχυση κινητικότητας και ανταγωνιστικότητας.</li>
+        <li><strong>Εισαγωγή μέσω Διεθνών Εξετάσεων:</strong> Διεκδικούμε το δικαίωμα εισαγωγής στα δημόσια πανεπιστήμια και μέσω διεθνών εξετάσεων (π.χ. GCE, GCSE) για τις αδιάθετες θέσεις.</li>
+        <li><strong>Ξένες Γλώσσες:</strong> Αναβάθμιση της διδασκαλίας ξένων γλωσσών στα προγράμματα σπουδών και παροχή σχετικών πιστοποιήσεων.</li>
+        <li><strong>Ενίσχυση Ταυτότητας Φοιτητή:</strong> Διεύρυνση των προνομίων της φοιτητικής ταυτότητας μέσω της Δωρεάν Έκδοσης Ευρωπαϊκής Κάρτας Νέων.</li>
+        <li><strong>Φοιτητική Ζωή στην Περιφέρεια:</strong> Προτείνουμε μέτρα ενίσχυσης των φοιτητών που φοιτούν σε περιφερειακά Πανεπιστήμια και στήριξη Κυπρίων του εξωτερικού.</li>
+        <li><strong>Αναβάθμιση ΑΤΕΙΚ:</strong> Υποστηρίζουμε την αναβάθμιση του ΑΤΕΙΚ σε Πανεπιστήμιο για ενίσχυση της τουριστικής και βιομηχανικής ανάπτυξης.</li>
+        <li><strong>Γραφείο Σταδιοδρομίας:</strong> Δημιουργία Γραφείου Σταδιοδρομίας για ενίσχυση των φοιτητών στην αναζήτηση εργασίας (π.χ. καλοκαίρι) και απόκτηση εμπειρίας.</li>
+      </ol>
+    </section>
+
+    <!-- ΚΥΠΡΙΑΚΟ -->
+    <section id="kypriako" class="section">
+      <h2>ΘΕΣΕΙΣ Φ.Π.Κ. ΠΡΩΤΟΠΟΡΙΑΣ ΓΙΑ ΤΟ ΚΥΠΡΙΑΚΟ</h2>
+      <ol>
+        <li><strong>Επίλυση Κυπριακού Προβλήματος:</strong> Συζήτηση για λύση στη βάση των συμφωνιών του ’77 και ’79, με εγγύηση δικαιωμάτων όπως η ελεύθερη διακίνηση και εγκατάσταση.</li>
+        <li><strong>Ενημέρωση και ευαισθητοποίηση:</strong> Προώθηση σωστής κουλτούρας, ειδικά στους νέους, για την ανάγκη επίλυσης του Κυπριακού προβλήματος.</li>
+        <li><strong>Διατήρηση πολιτιστικής ταυτότητας:</strong> Προστασία της ελληνικής πολιτιστικής κληρονομιάς στο πλαίσιο της Ευρωπαϊκής Ένωσης.</li>
+        <li><strong>Τερματισμός παρεμβάσεων και εγγυήσεων:</strong> Πρόταση για την κατάργηση των μονομερών παρεμβάσεων και της Συνθήκης των Εγγυήσεων.</li>
+        <li><strong>Μείωση στρατευμάτων:</strong> Σταδιακή μείωση στρατιωτικής παρουσίας, με στόχο την ισορροπία στη βάση της παλαιάς Συνθήκης Συμμαχίας.</li>
+        <li><strong>Περιουσιακά ζητήματα:</strong> Προτεραιότητα σε ιδιοκτήτες και χρήστες, ανάλογα με την εδαφική αναπροσαρμογή.</li>
+        <li><strong>Ισότιμη μεταχείριση:</strong> Ποσοστώσεις για μόνιμη διαμονή Τούρκων υπηκόων σε σχέση με Έλληνες υπηκόους (4 Έλληνες προς 1 Τούρκο).</li>
+        <li><strong>Συμφωνία East Med:</strong> Η συμφωνία ανάμεσα σε Κύπρο, Ελλάδα και Ισραήλ ενισχύει θέσεις της Κύπρου και Ελλάδας σχετικά με την ΑΟΖ.</li>
+        <li><strong>Στήριξη τριμερών συμφωνιών:</strong> Η διπλωματική συνεργασία ενισχύει τα νόμιμα δικαιώματα της Κύπρου.</li>
+        <li><strong>Καταδίκη πράξεων κατοχικού καθεστώτος:</strong> Ως Φ.Π.Κ. Πρωτοπορία καταδικάζουμε τις απαράδεκτες παράνομες πράξεις του κατοχικού καθεστώτος ως προς την κίνηση επέκτασης της αδείας εισόδου του παραλιακού μετώπου των Βαρωσίων στο βωμό των προεκλογικών διαδικασιών του ψευδοκράτους και του γενικότερου πλαισίου προκλητικών πράξεων εις βάρος της Ελληνοκυπριακής πλευράς.</li>
+      </ol>
+    </section>
+
+    <!-- ΠΡΟΤΑΣΕΙΣ -->
+    <section id="proposals" class="section">
+      <h2>ΠΡΟΤΑΣΕΙΣ ΓΙΑ WEBSITE</h2>
+      <ol>
+        <li>Αύξηση του αριθμού των προσφερόμενων μαθημάτων κατά το καλοκαιρινό εξάμηνο.</li>
+        <li>Αναπροσαρμογή του απαιτούμενου GPA για τη χορήγηση υποτροφιών.</li>
+        <li>Προσφορά μαθημάτων με υψηλό ποσοστό αποτυχίας και κατά το καλοκαιρινό εξάμηνο.</li>
+        <li>Διοργάνωση μαθημάτων tutoring κατά την εξεταστική περίοδο, για επεξήγηση σημαντικών θεωρητικών ενοτήτων και επίλυση ασκήσεων.</li>
+        <li>Αναθεώρηση των κριτηρίων χορήγησης υποτροφιών και επιδομάτων για τους Έλληνες φοιτητές.</li>
+        <li>Ενίσχυση της συνεργασίας του Πανεπιστημίου με φορείς του δημόσιου και ιδιωτικού τομέα, και ενσωμάτωση της πρακτικής άσκησης σε όλα τα προγράμματα σπουδών με ακαδημαϊκή βαρύτητα.</li>
+        <li>Δημιουργία 24ώρου μελετητηρίου για την καλύτερη εξυπηρέτηση των φοιτητών.</li>
+        <li>Αύξηση της αμοιβής των φοιτητών που εργάζονται εντός του Πανεπιστημίου.</li>
+        <li>Εκσυγχρονισμός και βελτίωση των εγκαταστάσεων στάθμευσης του Πανεπιστημίου.</li>
+        <li>Διοργάνωση εκδηλώσεων όπου οι φοιτητές θα έχουν τη δυνατότητα να παρακολουθήσουν και να συναντήσουν πετυχημένους επαγγελματίες στο τομέα τους.</li>
+        <li>Εκσυγχρονισμός των κριτηρίων και ποσών της Φοιτητικής Χορηγίας.</li>
+      </ol>
+    </section>
+
+   
+  </main>
+
+   <!-- Footer -->
+<footer class="text-light py-4" style="background-color: #0a3d91;">
+  <div class="container text-center">
+    <p class="mb-1">&copy; 2025 Φοιτιτική Παράταξη Πρωτοπορία Πανεπιστημίου Λευκωσίας. All rights reserved.</p>
+    
+   <!-- Social Media Icons -->
+<div class="d-flex justify-content-center gap-3 mb-2">
+  <a href="https://www.instagram.com/protoporiaunic/" target="_blank">
+    <img src="images/instagram-new--v2.png" style="height: 30px;">
+  </a>
+  <a href="https://www.tiktok.com/@fpkprotoporia.unic" target="_blank">
+    <img src="images/tiktok.png" style="height: 30px;">
+  </a>
+</div>
+
+
+    <!-- Contact Links -->
+    <p class="mb-0">
+      <a href="mailto:protoporiafpkunic@gmail.com" class="text-warning text-decoration-none">
+        Contact us
+      </a>
+    </p>
+    
+    <!-- Credits -->
+    <div style="font-size: 13px; margin-top: 5px;">
+      Made and designed by <a href="https://koumasweb.com" target="_blank" class="text-warning">KoumasWeb</a> ©
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const sections = ["foititika","kypriako","proposals"];
+    const tabs = {
+      foititika: document.getElementById("tab-foititika"),
+      kypriako: document.getElementById("tab-kypriako"),
+      proposals: document.getElementById("tab-proposals"),
+    };
+    function show(id){
+      sections.forEach(s=>{
+        document.getElementById(s).classList.toggle("active", s===id);
+        tabs[s].classList.toggle("active", s===id);
+      });
+    }
+    function init(){
+      const initial = (location.hash || "#foititika").replace("#","");
+      show(sections.includes(initial) ? initial : "foititika");
+    }
+    window.addEventListener("hashchange", init);
+    init();
+  </script>
+</body>
+</html>
