@@ -7,97 +7,41 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles/general.css">
   <style>
-    .subnav-wrap {
-      background:#f1f3f6;
-      border-bottom:1px solid #e2e6ea;
-      margin-top:80px; /* clears fixed navbar */
-    }
+    /* --- Layout helpers to keep footer at bottom --- */
+    html, body { height: 100%; margin: 0; display: flex; flex-direction: column; }
+    body { min-height: 100vh; }
+    main { flex: 1; }
+    footer { margin-top: auto; }
+
+    /* --- Subnav (match events.html style) --- */
+    .subnav-wrap { padding-top: 96px; } /* clears fixed navbar */
+    .title-row { display:flex; align-items:center; gap:1rem; margin: 12px auto 8px; max-width:1100px; padding:0 16px; }
+    .title-row .rule { flex:1; height:1px; background:#d7dbe6; }
+    .page-title { margin:0; font-size: clamp(28px, 3vw, 40px); letter-spacing:.5px; text-align:center; }
+
     .subnav {
-      max-width: 1100px;
-      margin: 0 auto;
-      display:flex;
-      gap:32px;
-      align-items:center;
-      justify-content:center;
-      padding:18px 16px;
-      font-weight:600;
-      letter-spacing:.02em;
+      max-width:1100px; margin: 0 auto 12px; padding: 8px 12px;
+      display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+      border:1px solid #e4e7f0; border-radius:10px; background:#f7f8fb;
     }
     .subnav a {
-      color:#2a3b57;
-      text-decoration:none;
-      position:relative;
-      padding:6px 2px;
-      opacity:.85;
+      text-decoration:none; padding:8px 14px; border-radius:999px;
+      font-weight:600; color:#0a3d91; border:1px solid transparent;
     }
-    .subnav a:hover { opacity:1; }
-    .subnav a.active {
-      color:#053a7e;
-    }
-    .subnav a.active::after {
-      content:"";
-      position:absolute;
-      left:0; right:0; bottom:-8px;
-      height:2px;
-      background:#053a7e;
-    }
+    .subnav a.active { background:#0a3d91; color:#fff; border-color:#0a3d91; }
 
-    .page-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 28px 16px 80px;
-    }
-
-    .title-row {
-      display:flex; align-items:center; gap:18px;
-      margin-top:8px; margin-bottom:22px;
-    }
-    .title-row .rule {
-      flex:1 1 auto;
-      height:1px; background:#e2e6ea;
-    }
-    h1.page-title {
-      margin:0;
-      font-size: clamp(32px, 4vw, 48px);
-      line-height:1.15;
-      letter-spacing:.02em;
-      color:#2a3b57;
-      font-weight:700;
-      text-transform:uppercase;
-      text-align:center;
-      flex:0 0 auto;
-      padding:0 8px;
-    }
-
-    .section { display:none; }
-    .section.active { display:block; }
-
-    .section h2 {
-      font-size: clamp(22px, 2.5vw, 28px);
-      color:#2a3b57;
-      margin: 12px 0 10px;
-      font-weight: 700;
-    }
-
-    .section p.lead {
-      color:#4a4e57; font-size:18px;
-    }
-    .section ol {
-      padding-left: 1.2rem;
-    }
-    .section li {
-      margin-bottom:14px;
-      color:#2d3340;
-      line-height:1.6;
-      font-size:18px;
-    }
-
-    .muted { color:#6c7583; }
+    /* --- Content area + section padding --- */
+    .page-container { max-width:1100px; margin:0 auto; padding: 0 16px 80px; }
+    .section { padding: 18px 8px; } /* extra breathing room on small screens */
+    .section h2 { font-size: clamp(22px, 2.5vw, 28px); color:#2a3b57; margin: 12px 0 10px; font-weight:700; }
+    .section p.lead { color:#4a4e57; font-size:18px; }
+    .section ol { padding-left: 1.2rem; }
+    .section li { margin-bottom:14px; color:#2d3340; line-height:1.6; font-size:18px; }
   </style>
 </head>
 <body>
 
- <!-- Navbar -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #0a3d91;">
     <div class="container d-flex align-items-center">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
@@ -123,22 +67,22 @@
     </div>
   </nav>
 
-
   <!-- Sub Navigation -->
-<div class="subnav-wrap">
-  <div class="title-row"  style="margin-top: 40px;">
-    <div class="rule"></div>
-    <h1 class="page-title">ΘΕΣΕΙΣ</h1>
-    <div class="rule"></div>
+  <div class="subnav-wrap">
+    <div class="title-row" style="margin-top: 40px;">
+      <div class="rule"></div>
+      <h1 class="page-title" style="margin:0; font-weight:800; font-size:clamp(28px, 3vw, 40px); letter-spacing:.5px; text-align:center; color:#2a3b57;">ΘΕΣΕΙΣ</h1>
+      <div class="rule"></div>
+    </div>
+
+    <nav class="subnav" aria-label="Υπομενού Θέσεων">
+      <a href="#foititika" id="tab-foititika">ΦΟΙΤΗΤΙΚΑ</a>
+      <a href="#kypriako"  id="tab-kypriako">ΚΥΠΡΙΑΚΟ</a>
+      <a href="#proposals" id="tab-proposals">ΠΡΟΤΑΣΕΙΣ</a>
+    </nav>
   </div>
 
-  <nav class="subnav" aria-label="Υπομενού Θέσεων">
-    <a href="#foititika" id="tab-foititika">ΦΟΙΤΗΤΙΚΑ</a>
-    <a href="#kypriako" id="tab-kypriako">ΚΥΠΡΙΑΚΟ</a>
-    <a href="#proposals" id="tab-proposals">ΠΡΟΤΑΣΕΙΣ</a>
-  </nav>
-</div>
-
+  <main class="page-container">
     <!-- ΦΟΙΤΗΤΙΚΑ -->
     <section id="foititika" class="section">
       <h2>Η ΦΠΚ ΠΡΩΤΟΠΟΡΙΑ ΠΡΟΤΕΙΝΕΙ</h2>
@@ -164,7 +108,7 @@
     </section>
 
     <!-- ΚΥΠΡΙΑΚΟ -->
-    <section id="kypriako" class="section">
+    <section id="kypriako" class="section d-none">
       <h2>ΘΕΣΕΙΣ Φ.Π.Κ. ΠΡΩΤΟΠΟΡΙΑΣ ΓΙΑ ΤΟ ΚΥΠΡΙΑΚΟ</h2>
       <ol>
         <li><strong>Επίλυση Κυπριακού Προβλήματος:</strong> Συζήτηση για λύση στη βάση των συμφωνιών του ’77 και ’79, με εγγύηση δικαιωμάτων όπως η ελεύθερη διακίνηση και εγκατάσταση.</li>
@@ -181,7 +125,8 @@
     </section>
 
     <!-- ΠΡΟΤΑΣΕΙΣ -->
-    <section id="proposals" class="section">
+    <section id="proposals" class="section d-none">
+        <h2>Η ΦΠΚ ΠΡΩΤΟΠΟΡΙΑ ΠΡΟΤΕΙΝΕΙ</h2>
       <ol>
         <li>Αύξηση του αριθμού των προσφερόμενων μαθημάτων κατά το καλοκαιρινό εξάμηνο.</li>
         <li>Αναπροσαρμογή του απαιτούμενου GPA για τη χορήγηση υποτροφιών.</li>
@@ -196,60 +141,66 @@
         <li>Εκσυγχρονισμός των κριτηρίων και ποσών της Φοιτητικής Χορηγίας.</li>
       </ol>
     </section>
-
-   
   </main>
 
-   <!-- Footer -->
-<footer class="text-light py-4" style="background-color: #0a3d91;">
-  <div class="container text-center">
-    <p class="mb-1">&copy; 2025 Φοιτιτική Παράταξη Πρωτοπορία Πανεπιστημίου Λευκωσίας. All rights reserved.</p>
-    
-   <!-- Social Media Icons -->
-<div class="d-flex justify-content-center gap-3 mb-2">
-  <a href="https://www.instagram.com/protoporiaunic/" target="_blank">
-    <img src="images/instagram-new--v2.png" style="height: 30px;">
-  </a>
-  <a href="https://www.tiktok.com/@fpkprotoporia.unic" target="_blank">
-    <img src="images/tiktok.png" style="height: 30px;">
-  </a>
-</div>
+  <!-- Footer -->
+  <footer class="text-light py-4" style="background-color: #0a3d91;">
+    <div class="container text-center">
+      <p class="mb-1">&copy; 2025 Φοιτιτική Παράταξη Πρωτοπορία Πανεπιστημίου Λευκωσίας. All rights reserved.</p>
 
+      <!-- Social Media Icons -->
+      <div class="d-flex justify-content-center gap-3 mb-2">
+        <a href="https://www.instagram.com/protoporiaunic/" target="_blank" aria-label="Instagram">
+          <img src="images/instagram-new--v2.png" style="height: 30px;" alt="Instagram">
+        </a>
+        <a href="https://www.tiktok.com/@fpkprotoporia.unic" target="_blank" aria-label="TikTok">
+          <img src="images/tiktok.png" style="height: 30px;" alt="TikTok">
+        </a>
+      </div>
 
-    <!-- Contact Links -->
-    <p class="mb-0">
-      <a href="mailto:protoporiafpkunic@gmail.com" class="text-warning text-decoration-none">
-        Contact us
-      </a>
-    </p>
-    
-    <!-- Credits -->
-    <div style="font-size: 13px; margin-top: 5px;">
-      Made and designed by <a href="https://koumasweb.com" target="_blank" class="text-warning">KoumasWeb</a> ©
+      <!-- Contact Links -->
+      <p class="mb-0">
+        <a href="mailto:protoporiafpkunic@gmail.com" class="text-warning text-decoration-none">
+          Contact us
+        </a>
+      </p>
+
+      <!-- Credits -->
+      <div style="font-size: 13px; margin-top: 5px;">
+        Made and designed by <a href="https://koumasweb.com" target="_blank" class="text-warning">KoumasWeb</a> ©
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const sections = ["foititika","kypriako","proposals"];
+    // --- Subnav logic (same pattern as events.html) ---
     const tabs = {
-      foititika: document.getElementById("tab-foititika"),
-      kypriako: document.getElementById("tab-kypriako"),
-      proposals: document.getElementById("tab-proposals"),
+      foititika: { tab: document.getElementById('tab-foititika'), section: document.getElementById('foititika') },
+      kypriako:  { tab: document.getElementById('tab-kypriako'),  section: document.getElementById('kypriako') },
+      proposals: { tab: document.getElementById('tab-proposals'), section: document.getElementById('proposals') }
     };
-    function show(id){
-      sections.forEach(s=>{
-        document.getElementById(s).classList.toggle("active", s===id);
-        tabs[s].classList.toggle("active", s===id);
+
+    function activate(which){
+      Object.entries(tabs).forEach(([key, {tab, section}])=>{
+        const on = (key === which);
+        tab.classList.toggle('active', on);
+        section.classList.toggle('d-none', !on);
       });
+      if (location.hash !== '#'+which) history.replaceState(null, '', '#'+which);
     }
-    function init(){
-      const initial = (location.hash || "#foititika").replace("#","");
-      show(sections.includes(initial) ? initial : "foititika");
+
+    function initFromHash(){
+      const h = (location.hash || '').replace('#','');
+      activate(['kypriako','proposals'].includes(h) ? h : 'foititika');
     }
-    window.addEventListener("hashchange", init);
-    init();
+
+    tabs.foititika.tab.addEventListener('click', (e)=>{ e.preventDefault(); activate('foititika'); });
+    tabs.kypriako.tab.addEventListener('click',  (e)=>{ e.preventDefault(); activate('kypriako');  });
+    tabs.proposals.tab.addEventListener('click', (e)=>{ e.preventDefault(); activate('proposals'); });
+
+    window.addEventListener('hashchange', initFromHash);
+    initFromHash();
   </script>
 </body>
 </html>

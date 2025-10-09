@@ -8,38 +8,70 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles/general.css">
   <style>
-    /* Page spacing to clear fixed navbar */
+    /* Clear fixed navbar */
     main { padding-top: 100px; }
 
-    /* Title & subnav row (mirrors positions/events style) */
-    .subnav-wrap { text-align:center; margin-bottom: 0.75rem; }
-    .page-title { font-weight: 800; letter-spacing:.3px; margin: 0; }
-    .title-row { display:flex; align-items:center; gap:1rem; margin: .5rem auto 1.25rem; }
-    .title-row .rule { flex:1; height:2px; background:#e2e2e2; }
-
-    .subnav {
-      display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap;
-      background:#fff; border:1px solid #e6e6e6; border-radius: 14px; padding: .5rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,.04);
+    /* Title with side rules (robust) */
+    .title-row{
+      display:flex; align-items:center; gap:1rem;
+      margin: 12px auto 10px; max-width:1100px; padding:0 16px;
     }
-    .subnav a {
+    .title-row .rule{
+      flex:1 1 24px;            /* allow to shrink, but not to 0 */
+      min-width:24px;           /* always show at least a small dash */
+      border-top:2px solid #cfd5e2;
+      height:0;                 /* use border for the line */
+    }
+    .page-title{
+      margin:0; font-weight:800;
+      font-size: clamp(28px, 3vw, 40px);
+      letter-spacing:.5px; text-align:center; color:#2a3b57;
+      /* allow wrapping so lines keep some space */
+      word-break: normal;
+      overflow-wrap: anywhere;  /* if a long word appears, it can break */
+      flex: 0 1 auto;           /* title may shrink/wrap */
+    }
+    /* Optional: on very narrow screens, let the lines wrap below if needed */
+    @media (max-width: 480px){
+      .title-row{ flex-wrap:wrap; }
+      .page-title{ width:100%; order:2; }
+      .title-row .rule{ flex:1 1 100%; order:3; }
+    }
+
+    /* Subnav (pills) like events/positions */
+    .subnav-wrap{ max-width:1100px; margin:0 auto 14px; padding:0 16px; }
+    .subnav{
+      display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+      background:#f7f8fb; border:1px solid #e4e7f0; border-radius:10px; padding:8px 12px;
+    }
+    .subnav a{
       text-decoration:none; color:#0a3d91; font-weight:700;
-      padding:.5rem .9rem; border-radius:999px;
+      padding:8px 14px; border-radius:999px; border:1px solid transparent;
     }
-    .subnav a.active,
-    .subnav a:hover { background:#0a3d91; color:#fff; }
+    .subnav a.active{ background:#0a3d91; color:#fff; border-color:#0a3d91; }
 
-    /* Section containers */
-    .section-wrap { padding: 1rem 0 2rem; }
-    .content-card {
+    /* Sections */
+    .section-wrap{ padding: 1rem 0 2rem; }
+    .content-card{
       background:#fff; border:1px solid #e9ecef; border-radius:14px; padding:1.25rem;
       box-shadow:0 4px 12px rgba(0,0,0,.06);
     }
-    .content-card h3 { font-weight:800; margin-bottom:.75rem; }
-    .muted { color:#6c757d; }
 
-    /* Hide inactive sections */
-    .hidden { display:none !important; }
+    /* Logo + text layout inside each section */
+    .content-media{
+      display:flex; gap:16px; align-items:flex-start;
+    }
+    .section-logo{
+      width:72px; height:72px; flex:0 0 72px;
+      border-radius:10px; background:#f7f7f7; padding:6px;
+      border:1px solid #e9ecef; object-fit:contain;
+    }
+    .content-body{ flex:1 1 auto; min-width:0; }
+    .content-body h3{ font-weight:800; margin-bottom:.5rem; }
+    .muted{ color:#6c757d; }
+
+    /* Hide inactive */
+    .hidden{ display:none !important; }
 
     /* Footer push */
     html, body { height:100%; }
@@ -48,7 +80,7 @@
   </style>
 </head>
 <body>
- <!-- Navbar -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #0a3d91;">
     <div class="container d-flex align-items-center">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
@@ -74,33 +106,35 @@
     </div>
   </nav>
 
+  <!-- Title (kept your extra margin-top) -->
+  <div class="title-row" style="margin-top: 100px;">
+    <div class="rule"></div>
+    <h1 class="page-title">ΠΟΙΟΙ ΕΙΜΑΣΤΕ</h1>
+    <div class="rule"></div>
+  </div>
 
-  <!-- Sub Navigation -->
-  <div style="margin-top: 40px;" class="container">
-    <div class="subnav-wrap">
-      <h1 class="page-title">ΠΟΙΟΙ ΕΙΜΑΣΤΕ</h1>
-    </div>
-
-    <div class="title-row">
-      <div class="rule"></div>
-      <nav class="subnav" aria-label="Υπομενού Ποιοι Είμαστε">
-        <a href="#intro"   id="tab-intro"   class="active">ΕΙΣΑΓΩΓΗ</a>
-        <a href="#fepal"   id="tab-fepal">ΦΕΠΑΛ</a>
-        <a href="#whyus"   id="tab-whyus">ΓΙΑΤΙ ΕΜΑΣ</a>
-      </nav>
-      <div class="rule"></div>
-    </div>
+  <!-- Subnav -->
+  <div class="subnav-wrap">
+    <nav class="subnav" aria-label="Υπομενού Ποιοι Είμαστε">
+      <a href="#intro" id="tab-intro">ΕΙΣΑΓΩΓΗ</a>
+      <a href="#fepal" id="tab-fepal">ΦΕΠΑΛ</a>
+      <a href="#whyus" id="tab-whyus">ΓΙΑΤΙ ΕΜΑΣ</a>
+    </nav>
   </div>
 
   <main>
     <section id="intro" class="section-wrap">
       <div class="container">
         <div class="content-card">
-          <h3>Εισαγωγή</h3>
-          <p class="muted mb-0">
-            <!-- TODO: Θα προστεθεί το κείμενο από το Word έγγραφο. -->
-            Προσωρινό κείμενο: Η ενότητα θα ενημερωθεί με το επίσημο κείμενο «Εισαγωγή» μόλις το λάβουμε.
-          </p>
+          <div class="content-media">
+            <img class="section-logo" src="images/logoPROTOPORIAS.png" alt="Πρωτοπορία UNIC">
+            <div class="content-body">
+              <h3>Εισαγωγή</h3>
+              <p class="muted mb-0">
+                Προσωρινό κείμενο: Η ενότητα θα ενημερωθεί με το επίσημο κείμενο «Εισαγωγή» μόλις το λάβουμε.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -108,11 +142,15 @@
     <section id="fepal" class="section-wrap hidden">
       <div class="container">
         <div class="content-card">
-          <h3>ΦΕΠΑΛ</h3>
-          <p class="muted mb-0">
-            <!-- TODO: Θα σταλεί σύντομα το κείμενο ΦΕΠΑΛ. -->
-            Προσωρινό κείμενο: Περιμένουμε το περιεχόμενο για την ενότητα ΦΕΠΑΛ.
-          </p>
+          <div class="content-media">
+            <img class="section-logo" src="images/logoPROTOPORIAS.png" alt="Πρωτοπορία UNIC">
+            <div class="content-body">
+              <h3>ΦΕΠΑΛ</h3>
+              <p class="muted mb-0">
+                Προσωρινό κείμενο: Περιμένουμε το περιεχόμενο για την ενότητα ΦΕΠΑΛ.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -120,62 +158,61 @@
     <section id="whyus" class="section-wrap hidden">
       <div class="container">
         <div class="content-card">
-          <h3>Γιατί Εμάς</h3>
-          <p class="muted">
-            <!-- TODO: Προτάσεις που υλοποιήσαμε (ξεχωριστό αρχείο). -->
-            Προσωρινό κείμενο: Θα καταχωρηθούν οι προτάσεις που υλοποιήσαμε.
-          </p>
+          <div class="content-media">
+            <img class="section-logo" src="images/logoPROTOPORIAS.png" alt="Πρωτοπορία UNIC">
+            <div class="content-body">
+              <h3>Γιατί Εμάς</h3>
+              <p class="muted">
+                Προσωρινό κείμενο: Θα καταχωρηθούν οι προτάσεις που υλοποιήσαμε.
+              </p>
 
-          <!-- Optional checklist/grid placeholder for later -->
-          <div class="row g-3">
-            <div class="col-md-6">
-              <div class="p-3 border rounded-3">
-                <strong class="d-block mb-1">Παράδειγμα Ενότητας</strong>
-                <span class="text-muted">Placeholder για επιμέρους περιγραφή.</span>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="p-3 border rounded-3">
+                    <strong class="d-block mb-1">Παράδειγμα Ενότητας</strong>
+                    <span class="text-muted">Placeholder για επιμέρους περιγραφή.</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="p-3 border rounded-3">
+                    <strong class="d-block mb-1">Παράδειγμα Ενότητας</strong>
+                    <span class="text-muted">Placeholder για επιμέρους περιγραφή.</span>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="p-3 border rounded-3">
-                <strong class="d-block mb-1">Παράδειγμα Ενότητας</strong>
-                <span class="text-muted">Placeholder για επιμέρους περιγραφή.</span>
-              </div>
-            </div>
-          </div>
 
+            </div> <!-- /content-body -->
+          </div> <!-- /content-media -->
         </div>
       </div>
     </section>
   </main>
 
-   <!-- Footer -->
-<footer class="text-light py-4" style="background-color: #0a3d91;">
-  <div class="container text-center">
-    <p class="mb-1">&copy; 2025 Φοιτιτική Παράταξη Πρωτοπορία Πανεπιστημίου Λευκωσίας. All rights reserved.</p>
-    
-   <!-- Social Media Icons -->
-<div class="d-flex justify-content-center gap-3 mb-2">
-  <a href="https://www.instagram.com/protoporiaunic/" target="_blank">
-    <img src="images/instagram-new--v2.png" style="height: 30px;">
-  </a>
-  <a href="https://www.tiktok.com/@fpkprotoporia.unic" target="_blank">
-    <img src="images/tiktok.png" style="height: 30px;">
-  </a>
-</div>
+  <!-- Footer -->
+  <footer class="text-light py-4" style="background-color: #0a3d91;">
+    <div class="container text-center">
+      <p class="mb-1">&copy; 2025 Φοιτιτική Παράταξη Πρωτοπορία Πανεπιστημίου Λευκωσίας. All rights reserved.</p>
 
+      <div class="d-flex justify-content-center gap-3 mb-2">
+        <a href="https://www.instagram.com/protoporiaunic/" target="_blank" aria-label="Instagram">
+          <img src="images/instagram-new--v2.png" style="height: 30px;" alt="Instagram">
+        </a>
+        <a href="https://www.tiktok.com/@fpkprotoporia.unic" target="_blank" aria-label="TikTok">
+          <img src="images/tiktok.png" style="height: 30px;" alt="TikTok">
+        </a>
+      </div>
 
-    <!-- Contact Links -->
-    <p class="mb-0">
-      <a href="mailto:protoporiafpkunic@gmail.com" class="text-warning text-decoration-none">
-        Contact us
-      </a>
-    </p>
-    
-    <!-- Credits -->
-    <div style="font-size: 13px; margin-top: 5px;">
-      Made and designed by <a href="https://koumasweb.com" target="_blank" class="text-warning">KoumasWeb</a> ©
+      <p class="mb-0">
+        <a href="mailto:protoporiafpkunic@gmail.com" class="text-warning text-decoration-none">
+          Contact us
+        </a>
+      </p>
+
+      <div style="font-size: 13px; margin-top: 5px;">
+        Made and designed by <a href="https://koumasweb.com" target="_blank" class="text-warning">KoumasWeb</a> ©
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -188,23 +225,21 @@
     ];
 
     function showSection(id) {
-      // sections
       tabs.forEach(t => {
         const sec = document.getElementById(t.id);
         if (sec) sec.classList.toggle('hidden', t.id !== id);
       });
-      // active tab
       tabs.forEach(t => {
         const a = document.getElementById(t.link);
         if (a) a.classList.toggle('active', t.id === id);
       });
+      if (location.hash !== '#'+id) history.replaceState(null, '', '#'+id);
     }
 
     function initFromHash() {
       const hash = (location.hash || '').replace('#','');
       const valid = tabs.map(t => t.id);
-      const target = valid.includes(hash) ? hash : 'intro';
-      showSection(target);
+      showSection(valid.includes(hash) ? hash : 'intro');
     }
 
     window.addEventListener('hashchange', initFromHash);

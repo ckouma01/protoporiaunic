@@ -17,6 +17,21 @@
     /* Section chrome (same spacing as other pages) */
     .page-wrap { padding-top: 100px; }
 
+    /* === Title with side rules (matches the other pages) === */
+    .title-row {
+      display:flex; align-items:center; gap:1rem;
+      margin: 12px auto 8px; max-width:1100px; padding:0 16px;
+    }
+    .title-row .rule { flex:1; height:1px; background:#d7dbe6; }
+    .page-title {
+      margin:0;
+      font-size: clamp(28px, 3vw, 40px);
+      letter-spacing:.5px;
+      text-align:center;
+      color:#2a3b57;
+      font-weight:700;
+    }
+
     /* Call-to-action */
     .cta-wrap { text-align: center; margin-bottom: 2rem; }
     .cta-wrap p { color:#444; margin-bottom: .5rem; }
@@ -65,7 +80,7 @@
 </head>
 <body>
 
- <!-- Navbar -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #0a3d91;">
     <div class="container d-flex align-items-center">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
@@ -91,13 +106,19 @@
     </div>
   </nav>
 
-
   <!-- Main -->
   <main class="page-wrap">
     <div class="container">
+      <!-- New title with side rules -->
+      <div class="title-row">
+        <div class="rule"></div>
+        <h1 class="page-title" style="margin:0; font-weight:800; font-size:clamp(28px, 3vw, 40px); letter-spacing:.5px; text-align:center; color:#2a3b57;">BLUE CARD</h1>
+        <div class="rule"></div>
+      </div>
+
+      <!-- Subtitle -->
       <div class="text-center mb-4">
-        <h2 class="mb-1">BlueCard – Συνεργαζόμενα Καταστήματα</h2>
-        <p class="text-muted mb-0">Δες τα οφέλη σου με την BlueCard και άνοιξε την κάρτα καταστήματος για λεπτομέρειες.</p>
+        <p class="text-muted mb-0">Δες τα οφέλη σου με την BlueCard και άνοιξε την κάρτα του συνεργαζόμενου καταστήματος για λεπτομέρειες.</p>
       </div>
 
       <div class="cta-wrap">
@@ -115,34 +136,33 @@
   </main>
 
   <!-- Footer -->
-<footer class="text-light py-4" style="background-color: #0a3d91;">
-  <div class="container text-center">
-    <p class="mb-1">&copy; 2025 Φοιτιτική Παράταξη Πρωτοπορία Πανεπιστημίου Λευκωσίας. All rights reserved.</p>
-    
-   <!-- Social Media Icons -->
-<div class="d-flex justify-content-center gap-3 mb-2">
-  <a href="https://www.instagram.com/protoporiaunic/" target="_blank">
-    <img src="images/instagram-new--v2.png" style="height: 30px;">
-  </a>
-  <a href="https://www.tiktok.com/@fpkprotoporia.unic" target="_blank">
-    <img src="images/tiktok.png" style="height: 30px;">
-  </a>
-</div>
+  <footer class="text-light py-4" style="background-color: #0a3d91; margin-top: 30px;">
+    <div class="container text-center">
+      <p class="mb-1">&copy; 2025 Φοιτιτική Παράταξη Πρωτοπορία Πανεπιστημίου Λευκωσίας. All rights reserved.</p>
 
+      <!-- Social Media Icons -->
+      <div class="d-flex justify-content-center gap-3 mb-2">
+        <a href="https://www.instagram.com/protoporiaunic/" target="_blank" aria-label="Instagram">
+          <img src="images/instagram-new--v2.png" style="height: 30px;" alt="Instagram">
+        </a>
+        <a href="https://www.tiktok.com/@fpkprotoporia.unic" target="_blank" aria-label="TikTok">
+          <img src="images/tiktok.png" style="height: 30px;" alt="TikTok">
+        </a>
+      </div>
 
-    <!-- Contact Links -->
-    <p class="mb-0">
-      <a href="mailto:protoporiafpkunic@gmail.com" class="text-warning text-decoration-none">
-        Contact us
-      </a>
-    </p>
-    
-    <!-- Credits -->
-    <div style="font-size: 13px; margin-top: 5px;">
-      Made and designed by <a href="https://koumasweb.com" target="_blank" class="text-warning">KoumasWeb</a> ©
+      <!-- Contact Links -->
+      <p class="mb-0">
+        <a href="mailto:protoporiafpkunic@gmail.com" class="text-warning text-decoration-none">
+          Contact us
+        </a>
+      </p>
+
+      <!-- Credits -->
+      <div style="font-size: 13px; margin-top: 5px;">
+        Made and designed by <a href="https://koumasweb.com" target="_blank" class="text-warning">KoumasWeb</a> ©
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <!-- Brand Detail Modal -->
   <div class="modal fade" id="brandModal" tabindex="-1" aria-hidden="true">
@@ -232,14 +252,13 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // ===== Placeholder partners =====
-    // Replace / extend this list when you have the final brands.
     const brands = [
       {
         name: "Angelidou Pharmacy",
         discount: "12% Discount",
         start: "08 July 2025",
         end: "30 September 2026",
-        logo: "images/brand_pharmacy.png", // optional; if missing, initials bubble is used
+        logo: "images/brand_pharmacy.png",
         new: false,
         description: [
           "Discount is not applied on already existing offers and medicines.",

@@ -13,18 +13,21 @@
     body { background: #efefef; }
     main { padding-top: 100px; }
 
-    /* Section title */
-    .page-title {
-      font-weight: 700;
-      letter-spacing: .3px;
-      text-align: center;
-      margin-bottom: 1.25rem;
-    }
-    .title-rule {
-      height: 2px; background: #e2e2e2; border: 0; width: 100%;
-    }
-    .title-wrap { display:flex; align-items:center; gap:1rem; }
-    .title-wrap .spacer { flex:1; }
+   /* Title with side rules (matches the other pages) */
+.title-row { 
+  display:flex; align-items:center; gap:1rem; 
+  margin: 12px auto 8px; max-width:1100px; padding:0 16px; 
+}
+.title-row .rule { flex:1; height:1px; background:#d7dbe6; }
+.page-title { 
+  margin:0; 
+  font-size: clamp(28px, 3vw, 40px); 
+  letter-spacing:.5px; 
+  text-align:center; 
+  color:#2a3b57;
+  font-weight:700;
+}
+
 
     /* Timeline layout */
     .timeline {
@@ -147,12 +150,13 @@
 
   <main>
     <div class="container">
-      <div class="title-wrap mb-3">
-        <div class="spacer"><hr class="title-rule"></div>
-        <h2 class="page-title m-0">ΝΕΑ &amp; ΕΝΗΜΕΡΩΣΕΙΣ</h2>
-        <div class="spacer"><hr class="title-rule"></div>
-      </div>
-    </div>
+  <div class="title-row">
+    <div class="rule"></div>
+    <h1 class="page-title" style="margin:0; font-weight:800; font-size:clamp(28px, 3vw, 40px); letter-spacing:.5px; text-align:center; color:#2a3b57;">ΝΕΑ &amp; ΕΝΗΜΕΡΩΣΕΙΣ</h1>
+    <div class="rule"></div>
+  </div>
+</div>
+
 
     <!-- Timeline -->
     <section class="timeline" id="timeline">
