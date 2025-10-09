@@ -1,0 +1,62 @@
+/* Mobile-first (default) */
+.hero {
+  margin-top: 70px;
+  position: relative;
+  height: 80vh; /* good for mobile */
+  background: url(../images/10xronia.png) center center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  overflow: hidden;
+}
+
+
+/* Desktop override */
+@media (min-width: 992px) {
+  .hero {
+
+  position: relative;
+  height: auto; /* good for mobile */
+  background: url(../images/10xronia.png) center center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  overflow: hidden;               /* full height background */
+  background-position: center 43%; /* shift image down a bit */
+  }
+
+
+}
+
+.highlights {
+  margin-top: 80px; /* push the scroller lower */
+}
+
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2); /* darkness overlay */
+  backdrop-filter: blur(1px);      /* blur effect */
+  z-index: 1;
+}
+
+.hero * {
+  position: relative;
+  z-index: 2; /* bring text above the overlay */
+}
+/* Default (mobile-first) */
+#highlightsWrap {
+  margin-top: 2rem; /* keep it close on mobile */
+}
+
+/* Desktop override */
+@media (min-width: 992px) {
+  #highlightsWrap {
+    margin-top:25rem;  /* push it way lower */
+  }
+}
+
