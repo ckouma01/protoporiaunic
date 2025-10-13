@@ -8,37 +8,27 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles/general.css">
   <style>
-    /* Clear fixed navbar */
     main { padding-top: 100px; }
-
-    /* Title with side rules (robust) */
     .title-row{
       display:flex; align-items:center; gap:1rem;
       margin: 12px auto 10px; max-width:1100px; padding:0 16px;
     }
     .title-row .rule{
-      flex:1 1 24px;            /* allow to shrink, but not to 0 */
-      min-width:24px;           /* always show at least a small dash */
-      border-top:2px solid #cfd5e2;
-      height:0;                 /* use border for the line */
+      flex:1 1 24px; min-width:24px;
+      border-top:2px solid #cfd5e2; height:0;
     }
     .page-title{
       margin:0; font-weight:800;
       font-size: clamp(28px, 3vw, 40px);
       letter-spacing:.5px; text-align:center; color:#2a3b57;
-      /* allow wrapping so lines keep some space */
-      word-break: normal;
-      overflow-wrap: anywhere;  /* if a long word appears, it can break */
-      flex: 0 1 auto;           /* title may shrink/wrap */
+      word-break: normal; overflow-wrap:anywhere;
+      flex:0 1 auto;
     }
-    /* Optional: on very narrow screens, let the lines wrap below if needed */
-    @media (max-width: 480px){
+    @media (max-width:480px){
       .title-row{ flex-wrap:wrap; }
       .page-title{ width:100%; order:2; }
       .title-row .rule{ flex:1 1 100%; order:3; }
     }
-
-    /* Subnav (pills) like events/positions */
     .subnav-wrap{ max-width:1100px; margin:0 auto 14px; padding:0 16px; }
     .subnav{
       display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
@@ -49,18 +39,12 @@
       padding:8px 14px; border-radius:999px; border:1px solid transparent;
     }
     .subnav a.active{ background:#0a3d91; color:#fff; border-color:#0a3d91; }
-
-    /* Sections */
-    .section-wrap{ padding: 1rem 0 2rem; }
+    .section-wrap{ padding:1rem 0 2rem; }
     .content-card{
       background:#fff; border:1px solid #e9ecef; border-radius:14px; padding:1.25rem;
       box-shadow:0 4px 12px rgba(0,0,0,.06);
     }
-
-    /* Logo + text layout inside each section */
-    .content-media{
-      display:flex; gap:16px; align-items:flex-start;
-    }
+    .content-media{ display:flex; gap:16px; align-items:flex-start; }
     .section-logo{
       width:72px; height:72px; flex:0 0 72px;
       border-radius:10px; background:#f7f7f7; padding:6px;
@@ -68,23 +52,17 @@
     }
     .content-body{ flex:1 1 auto; min-width:0; }
     .content-body h3{ font-weight:800; margin-bottom:.5rem; }
-    .muted{ color:#6c757d; }
-
-    /* Hide inactive */
     .hidden{ display:none !important; }
-
-    /* Footer push */
-    html, body { height:100%; }
-    body { display:flex; flex-direction:column; min-height:100vh; }
-    main { flex:1; }
+    html, body{ height:100%; }
+    body{ display:flex; flex-direction:column; min-height:100vh; }
+    main{ flex:1; }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #0a3d91;">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:#0a3d91;">
     <div class="container d-flex align-items-center">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img src="images/logoPROTOPORIAS.png" alt="Logo" style="height: 60px;">
+        <img src="images/logoPROTOPORIAS.png" alt="Logo" style="height:60px;">
         <h1>UNIC</h1>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -106,19 +84,17 @@
     </div>
   </nav>
 
-  <!-- Title (kept your extra margin-top) -->
-  <div class="title-row" style="margin-top: 100px;">
+  <div class="title-row" style="margin-top:100px;">
     <div class="rule"></div>
     <h1 class="page-title">ΠΟΙΟΙ ΕΙΜΑΣΤΕ</h1>
     <div class="rule"></div>
   </div>
 
-  <!-- Subnav -->
   <div class="subnav-wrap">
     <nav class="subnav" aria-label="Υπομενού Ποιοι Είμαστε">
       <a href="#intro" id="tab-intro">ΕΙΣΑΓΩΓΗ</a>
       <a href="#fepal" id="tab-fepal">ΦΕΠΑΛ</a>
-      <a href="#whyus" id="tab-whyus">ΓΙΑΤΙ ΕΜΑΣ</a>
+       <!-- Upload form  <a href="#whyus" id="tab-whyus">ΓΙΑΤΙ ΕΜΑΣ</a>--> 
     </nav>
   </div>
 
@@ -130,9 +106,37 @@
             <img class="section-logo" src="images/logoPROTOPORIAS.png" alt="Πρωτοπορία UNIC">
             <div class="content-body">
               <h3>Εισαγωγή</h3>
-              <p class="muted mb-0">
-                Προσωρινό κείμενο: Η ενότητα θα ενημερωθεί με το επίσημο κείμενο «Εισαγωγή» μόλις το λάβουμε.
-              </p>
+              <p><em>«Μαζί θα διαμορφώσουμε το νέο, το καινοτόμο, μια Νέα Πρωτοπορία»</em></p>
+
+              <p>Η Φοιτητική Παράταξη Κυπρίων <strong>ΠΡΩΤΟΠΟΡΙΑ</strong> είναι αυτοτελής, πρωτοπόρος, μαζική, συνδικαλιστική πολιτική οργάνωση φοιτητών που αγωνίζεται στον ιδεολογικοπολιτικό χώρο της κεντροδεξιάς με τις αρχές του Κοινωνικού Φιλελευθερισμού. Κυρίαρχα ιδεώδη της πολιτικής μας είναι αρχές της ελευθερίας, της ισότητας και της κοινωνικής δικαιοσύνης.</p>
+
+              <p>Πυρήνας των πολιτικών μας θέσεων και φάρος των δράσεών μας είναι η δικαιωμένη ιδεολογία του κοινωνικού φιλελευθερισμού. Ο σύγχρονος κοινωνικός φιλελευθερισμός είναι ανθρωποκεντρική ιδεολογία μέσα από την οποία το άτομο βρίσκει το ρόλο του στην κοινωνία. Σε μια ανοιχτή κοινωνία, η ελευθερία είναι το υπέρτατο ιδανικό και δεν προβάλλεται κατ’ αντιδιαστολή στην ισότητα, αλλά αντίθετα, οδηγεί προς την πραγματική ισότητα.</p>
+
+              <p>Έχουμε συγκεκριμένο όραμα για την κοινωνία μας, την ευρωπαϊκή οικογένεια, τον κόσμο:</p>
+              <ul>
+                <li>Είμαστε αμετανόητοι υποστηρικτές της ελευθερίας σκέψης, βούλησης και έκφρασης.</li>
+                <li>Εργαζόμαστε με ζήλο και αφοσίωση για τα εθνικά συμφέροντα του τόπου μας.</li>
+                <li>Στηρίζουμε την ανοιχτή κοινωνία των πολιτών και τον ελεύθερο ανταγωνισμό.</li>
+                <li>Πιστεύουμε στην ισότητα ευκαιριών αλλά και στην αναγνώριση των ικανοτήτων και αναγκών του κάθε ανθρώπου.</li>
+                <li>Είμαστε ταγμένοι υπέρ της ευρωπαϊκής προοπτικής. Επιζητούμε μια Κύπρο σύγχρονη στην καρδιά μιας ολοένα και πιο ισχυρής Ευρωπαϊκής Ένωσης.</li>
+                <li>Μέσα από τη δράση μας προάγουμε τις αξίες της συμμετοχικότητας, της ανιδιοτελούς προσφοράς και της συνεχούς συνεισφοράς στο κοινωνικό σύνολο.</li>
+              </ul>
+
+              <p>Η <strong>ΠΡΩΤΟΠΟΡΙΑ</strong> πιστεύει συνειδητά στην ιερή έννοια της Δημοκρατίας και της Ελευθερίας. Αντιτάσσεται σθεναρά σε όλες ανεξαίρετα τις μορφές ολοκληρωτισμού ή καταπίεσης ή βιασμού της ανθρώπινης ελευθερίας και της αξιοπρέπειας.</p>
+
+              <p>Η <strong>ΠΡΩΤΟΠΟΡΙΑ</strong> πιστεύει αταλάντευτα στην ισότητα, την αδελφοσύνη, τον αλληλοσεβασμό, την κοινωνική δικαιοσύνη που πηγάζει από τις αρχές και την έννοια της λαϊκής κυριαρχίας.</p>
+
+              <p>Η <strong>ΠΡΩΤΟΠΟΡΙΑ</strong> πιστεύει στον ελεύθερο, καλόπιστο και εποικοδομητικό διάλογο. Αποδέχεται τη διαφωνία, τον έντιμο ανταγωνισμό, την ελεύθερη και αβίαστη διακίνηση ιδεών και απόψεων, χωρίς υπονόμευση, σε ένα δημοκρατικό πολίτευμα.</p>
+
+              <p>Ως Παράταξη, η <strong>Πρωτοπορία</strong> έχει οικονομική αυτονομία αλλά και αυτονομία στις αποφάσεις. Απαλλαγμένη από «έτοιμες γνώμες» και «τυφλές υποταγές», η <strong>Πρωτοπορία</strong> εκφράζει τα πραγματικά συμφέροντα των φοιτητών και έχει αποδείξει πολλές φορές πως θα υπερασπιστεί τα δικαιώματά τους χωρίς δισταγμό.</p>
+
+              <p><strong>Έλα και εσύ...</strong></p>
+              <ul>
+                <li>στη μεγάλη και δημοκρατική Παράταξη</li>
+                <li>στη δυναμικότερη ομάδα</li>
+                <li>στην ειλικρινή και αληθινά καθαρή φοιτητική φωνή</li>
+                <li>στη Φ.Π.Κ. ΠΡΩΤΟΠΟΡΙΑ!</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -147,14 +151,20 @@
             <div class="content-body">
               <h3>ΦΕΠΑΛ</h3>
               <p class="muted mb-0">
-                Προσωρινό κείμενο: Περιμένουμε το περιεχόμενο για την ενότητα ΦΕΠΑΛ.
+                Η Φοιτητική Ένωση του Πανεπιστημίου Λευκωσίας (Φ.Ε.ΠΑ.Λ.) είναι το επίσημο 
+                όργανο που εκπροσωπεί όλους τους φοιτητές. Ο ρόλος της είναι να βοηθά στην επίλυση 
+                προβλημάτων και θεμάτων που αφορούν τη φοιτητική ζωή, μέσα από συζήτηση και συνεργασία 
+                με το Πανεπιστήμιο. Κάθε χρόνο, στο δεύτερο εξάμηνο, γίνονται εκλογές για την ανάδειξη 
+                του νέου Διοικητικού Συμβουλίου της Φ.Ε.ΠΑ.Λ., όπου όλοι οι φοιτητές έχουν δικαίωμα 
+                συμμετοχής και ψήφου. Στην τελευταία εκλογική αναμέτρηση η Φ.Π.Κ Πρωτοπορία κατέλαβε 
+                13 έδρες από τις 19 του συμβουλίου.
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-
+<!--  Why us
     <section id="whyus" class="section-wrap hidden">
       <div class="container">
         <div class="content-card">
@@ -162,88 +172,59 @@
             <img class="section-logo" src="images/logoPROTOPORIAS.png" alt="Πρωτοπορία UNIC">
             <div class="content-body">
               <h3>Γιατί Εμάς</h3>
-              <p class="muted">
-                Προσωρινό κείμενο: Θα καταχωρηθούν οι προτάσεις που υλοποιήσαμε.
-              </p>
-
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <div class="p-3 border rounded-3">
-                    <strong class="d-block mb-1">Παράδειγμα Ενότητας</strong>
-                    <span class="text-muted">Placeholder για επιμέρους περιγραφή.</span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="p-3 border rounded-3">
-                    <strong class="d-block mb-1">Παράδειγμα Ενότητας</strong>
-                    <span class="text-muted">Placeholder για επιμέρους περιγραφή.</span>
-                  </div>
-                </div>
-              </div>
-
-            </div> <!-- /content-body -->
-          </div> <!-- /content-media -->
+              <p class="muted">Προσωρινό κείμενο: Θα καταχωρηθούν οι προτάσεις που υλοποιήσαμε.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  </main>
+  </main> -->
 
-  <!-- Footer -->
-  <footer class="text-light py-4" style="background-color: #0a3d91;">
+  <footer class="text-light py-4" style="background-color:#0a3d91;">
     <div class="container text-center">
-      <p class="mb-1">&copy; 2025 Φοιτιτική Παράταξη Πρωτοπορία Πανεπιστημίου Λευκωσίας. All rights reserved.</p>
-
+      <p class="mb-1">&copy; 2025 Φοιτητική Παράταξη Πρωτοπορία Πανεπιστημίου Λευκωσίας. All rights reserved.</p>
       <div class="d-flex justify-content-center gap-3 mb-2">
         <a href="https://www.instagram.com/protoporiaunic/" target="_blank" aria-label="Instagram">
-          <img src="images/instagram-new--v2.png" style="height: 30px;" alt="Instagram">
+          <img src="images/instagram-new--v2.png" style="height:30px;" alt="Instagram">
         </a>
         <a href="https://www.tiktok.com/@fpkprotoporia.unic" target="_blank" aria-label="TikTok">
-          <img src="images/tiktok.png" style="height: 30px;" alt="TikTok">
+          <img src="images/tiktok.png" style="height:30px;" alt="TikTok">
         </a>
       </div>
-
       <p class="mb-0">
-        <a href="mailto:protoporiafpkunic@gmail.com" class="text-warning text-decoration-none">
-          Contact us
-        </a>
+        <a href="mailto:protoporiafpkunic@gmail.com" class="text-warning text-decoration-none">Contact us</a>
       </p>
-
-      <div style="font-size: 13px; margin-top: 5px;">
+      <div style="font-size:13px; margin-top:5px;">
         Made and designed by <a href="https://koumasweb.com" target="_blank" class="text-warning">KoumasWeb</a> ©
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Simple hash router for tabs (same pattern as positions/events)
-    const tabs = [
-      { id: 'intro', link: 'tab-intro' },
-      { id: 'fepal', link: 'tab-fepal' },
-      { id: 'whyus', link: 'tab-whyus' },
+    const tabs=[
+      {id:'intro',link:'tab-intro'},
+      {id:'fepal',link:'tab-fepal'},
+      {id:'whyus',link:'tab-whyus'},
     ];
-
-    function showSection(id) {
-      tabs.forEach(t => {
-        const sec = document.getElementById(t.id);
-        if (sec) sec.classList.toggle('hidden', t.id !== id);
+    function showSection(id){
+      tabs.forEach(t=>{
+        const sec=document.getElementById(t.id);
+        if(sec)sec.classList.toggle('hidden',t.id!==id);
       });
-      tabs.forEach(t => {
-        const a = document.getElementById(t.link);
-        if (a) a.classList.toggle('active', t.id === id);
+      tabs.forEach(t=>{
+        const a=document.getElementById(t.link);
+        if(a)a.classList.toggle('active',t.id===id);
       });
-      if (location.hash !== '#'+id) history.replaceState(null, '', '#'+id);
+      if(location.hash!=='#'+id)history.replaceState(null,'','#'+id);
     }
-
-    function initFromHash() {
-      const hash = (location.hash || '').replace('#','');
-      const valid = tabs.map(t => t.id);
-      showSection(valid.includes(hash) ? hash : 'intro');
+    function initFromHash(){
+      const hash=(location.hash||'').replace('#','');
+      const valid=tabs.map(t=>t.id);
+      showSection(valid.includes(hash)?hash:'intro');
     }
-
-    window.addEventListener('hashchange', initFromHash);
-    document.addEventListener('DOMContentLoaded', initFromHash);
+    window.addEventListener('hashchange',initFromHash);
+    document.addEventListener('DOMContentLoaded',initFromHash);
   </script>
 </body>
 </html>
