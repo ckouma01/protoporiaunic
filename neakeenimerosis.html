@@ -10,8 +10,16 @@
 
   <style>
     /* Page chrome spacing (same navbar height as the rest of site) */
-    body { background: #efefef; }
-    main { padding-top: 100px; }
+    body {
+      background: #efefef;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      padding-top: 100px;
+      flex: 1;
+    }
 
    /* Title with side rules (matches the other pages) */
 .title-row { 
@@ -370,3 +378,4 @@
   </script>
 </body>
 </html>
+
