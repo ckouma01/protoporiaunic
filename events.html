@@ -93,15 +93,17 @@
     <section id="images" class="py-4">
       <div class="container">
         <h2 class="text-center mb-4">Εικόνες</h2>
-        <p>Κάντε κλικ σε οποιαδήποτε εικόνα για μεγαλύτερη προβολή.</p>
+        <p id="galleryHelpText">Επιλέξτε τίτλο για να δείτε εικόνες.</p>
+
+        <div class="mb-3">
+          <button id="backToTitles" class="btn btn-outline-secondary d-none">Πίσω</button>
+        </div>
 
         <div id="galleryGrid" class="row g-3">
           <!-- items injected here -->
         </div>
 
-        <div class="text-center mt-3">
-          <button id="loadMoreImages" class="btn btn-outline-primary d-none">Φόρτωσε περισσότερες</button>
-        </div>
+        <div class="text-center mt-3"></div>
       </div>
     </section>
 
@@ -218,12 +220,16 @@
       catch { return ''; }
     };
 
-    // ---------- ΕΙΚΟΝΕΣ (former images.html) ----------
+    // ---------- ΕΙΚΟΝΕΣ (titles first, then images by title) ----------
     const grid = document.getElementById('galleryGrid');
-    const loadMoreImages = document.getElementById('loadMoreImages');
-    const PAGE_IMAGES = 12;
-    let lastImgDoc = null;
-    let imagesEnd  = false;
+    const helpText = document.getElementById('galleryHelpText');
+    const backBtn = document.getElementById('backToTitles');
+
+    // Local state: map titles -> images
+    const galleryByTitle = new Map();
+    const GALLERY_PAGE = 50;
+    let galleryLastDoc = null;
+    let galleryLoadedAll = false;
 
     function renderImageCard({ imageUrl, title="", caption="" }) {
       const col = document.createElement('div');
@@ -252,35 +258,80 @@
       modal.show();
     }
 
-    async function loadImagesPage() {
-      if (imagesEnd) return;
-      let qy = query(collection(db, 'gallery'), orderBy('createdAt','desc'), limit(PAGE_IMAGES));
-      if (lastImgDoc) qy = query(collection(db, 'gallery'), orderBy('createdAt','desc'), startAfter(lastImgDoc), limit(PAGE_IMAGES));
+    function clearGrid(){ grid.innerHTML = ''; }
 
-      const snap = await getDocs(qy);
-      if (snap.empty) {
-        imagesEnd = true;
-        loadMoreImages.classList.add('d-none');
-        if (!grid.children.length) {
-          const msg = document.createElement('div');
-          msg.className = "text-center text-muted";
-          msg.textContent = "Δεν υπάρχουν εικόνες προς το παρόν.";
-          grid.appendChild(msg);
+    async function loadAllGalleryDocs(){
+      while(!galleryLoadedAll){
+        let qy = query(collection(db, 'gallery'), orderBy('createdAt','desc'), limit(GALLERY_PAGE));
+        if (galleryLastDoc) {
+          qy = query(collection(db, 'gallery'), orderBy('createdAt','desc'), startAfter(galleryLastDoc), limit(GALLERY_PAGE));
         }
+
+        const snap = await getDocs(qy);
+        if (snap.empty) { galleryLoadedAll = true; break; }
+
+        snap.forEach(docSnap => {
+          const d = docSnap.data();
+          if (!d?.imageUrl) return;
+          const title = (d.title || 'Χωρίς τίτλο').trim();
+          const arr = galleryByTitle.get(title) || [];
+          arr.push({ imageUrl: d.imageUrl, title: d.title || '', caption: d.caption || '' });
+          galleryByTitle.set(title, arr);
+        });
+
+        galleryLastDoc = snap.docs[snap.docs.length - 1];
+        if (snap.size < GALLERY_PAGE) galleryLoadedAll = true;
+      }
+    }
+
+    function renderTitles(){
+      clearGrid();
+      backBtn.classList.add('d-none');
+      helpText.textContent = 'Επιλέξτε τίτλο για να δείτε εικόνες.';
+
+      const titles = Array.from(galleryByTitle.keys()).sort((a,b)=> a.localeCompare(b, 'el'));
+      if (!titles.length){
+        const msg = document.createElement('div');
+        msg.className = 'text-center text-muted';
+        msg.textContent = 'Δεν υπάρχουν εικόνες προς το παρόν.';
+        grid.appendChild(msg);
         return;
       }
 
-      snap.forEach(docSnap => {
-        const d = docSnap.data();
-        if (d?.imageUrl) renderImageCard({ imageUrl: d.imageUrl, title: d.title, caption: d.caption });
+      titles.forEach(t => {
+        const col = document.createElement('div');
+        col.className = 'col-12 col-md-8 col-lg-6 mx-auto';
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-outline-primary w-100 text-start';
+        btn.style.marginBottom = '8px';
+        btn.textContent = t;
+        btn.addEventListener('click', ()=> showTitle(t));
+        col.appendChild(btn);
+        grid.appendChild(col);
       });
-
-      lastImgDoc = snap.docs[snap.docs.length - 1];
-      loadMoreImages.classList.toggle('d-none', snap.size < PAGE_IMAGES);
     }
 
-    loadMoreImages.addEventListener('click', loadImagesPage);
-    loadImagesPage();
+    function showTitle(title){
+      clearGrid();
+      backBtn.classList.remove('d-none');
+      helpText.textContent = 'Κάντε κλικ σε οποιαδήποτε εικόνα για μεγαλύτερη προβολή.';
+      const arr = galleryByTitle.get(title) || [];
+      if (!arr.length){
+        const msg = document.createElement('div');
+        msg.className = 'text-center text-muted';
+        msg.textContent = 'Δεν βρέθηκαν εικόνες για αυτόν τον τίτλο.';
+        grid.appendChild(msg);
+        return;
+      }
+      arr.forEach(renderImageCard);
+    }
+
+    backBtn.addEventListener('click', renderTitles);
+
+    (async function initGallery(){
+      await loadAllGalleryDocs();
+      renderTitles();
+    })();
 
     // ---------- UPCOMING (former events.html) ----------
     const wrap    = document.getElementById('eventsWrap');
